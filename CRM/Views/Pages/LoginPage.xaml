@@ -4,21 +4,83 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:CRM.Views.Pages"
+      xmlns:viewModels="clr-namespace:CRM.ViewModels"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d"
       Title="LoginPage"  Height="1080" Width="1920">
+    <Page.Resources>
+
+        <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+            <Setter Property="FontSize" Value="120" />
+        </Style>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="FontSize" Value="120" />
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="FontSize" Value="80" />
+        </Style>
+    </Page.Resources>
+    
+    <Page.DataContext>
+        <viewModels:LoginVM></viewModels:LoginVM>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="0.3*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
         
-        <TextBlock></TextBlock>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Label>Логин</Label>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="2">
+                <TextBlock Text="{Binding Path=LoginData.UserName, Mode=TwoWay}"></TextBlock>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Label>Пароль</Label>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2">
+                <TextBlock Text="{Binding Path=LoginData.Password, Mode=TwoWay}"></TextBlock>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+                <Button Content="Войти">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Login" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            
+        </Grid>
     </Grid>
 </Page>

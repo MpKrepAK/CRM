@@ -1,0 +1,49 @@
+﻿<Page x:Class="CRM.Views.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CRM.Views.Pages"
+      xmlns:viewModels="clr-namespace:CRM.ViewModels"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      mc:Ignorable="d"
+      Title="MainPage" Height="1080" Width="1920">
+    <Page.DataContext>
+        <viewModels:MainVM></viewModels:MainVM>
+    </Page.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0" 
+                    Orientation="Vertical">
+            <Image></Image>
+            <Viewbox>
+                <StackPanel>
+                    <Label Content="Клиенты">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="ShowCustomers" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
+                    <Label Content="Поставщики"></Label>
+                    <Label Content="Пользователи"></Label>
+                    <Label Content="Продукты"></Label>
+                    <Label Content="Типы продуктов"></Label>
+                    <Label Content="Заказы"></Label>
+                    <Label Content="Склад"></Label>
+                    <Label Content="Задания"></Label>
+                    <Label Content="Задания подразделения"></Label>
+                    <Label Content="Чат"></Label>
+                    <Label Content="Роли"></Label>
+                </StackPanel>
+            </Viewbox>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Frame Content="{Binding Path=CurrentPage}"></Frame>
+        </Grid>
+    </Grid>
+</Page>

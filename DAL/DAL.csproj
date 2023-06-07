@@ -11,8 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Entitys\" />
-      <Folder Include="Repositories\" />
+      <ProjectReference Include="..\BLL\BLL.csproj" />
     </ItemGroup>
 
 </Project>

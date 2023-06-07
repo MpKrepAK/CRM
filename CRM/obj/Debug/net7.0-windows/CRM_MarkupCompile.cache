@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\Programming\Projects\CRM\CRM\App.xaml
-2-1416838236
+4-286970816
 
-5-829267872
-2131503127467
-Views\Pages\LoginPage.xaml;Views\Windows\CrmMainWindow.xaml;
+111539674657
+215-1388708883
+Views\Pages\LoginPage.xaml;Views\Pages\MainPage.xaml;Views\Pages\MainPages\CustomersPage.xaml;Views\Windows\CrmMainWindow.xaml;
 
 False
 

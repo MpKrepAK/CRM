@@ -37,3 +37,12 @@ D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\CRM.genruntimeconfig.ca
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\ref\CRM.dll
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\LoginPage.g.cs
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\LoginPage.baml
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\DAL.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\DAL.pdb
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPage.g.cs
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\CustomersPage.g.cs
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPage.baml
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\CustomersPage.baml
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\BLL.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\BLL.pdb

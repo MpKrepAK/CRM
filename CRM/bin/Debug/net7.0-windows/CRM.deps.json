@@ -8,6 +8,8 @@
     ".NETCoreApp,Version=v7.0": {
       "CRM/1.0.0": {
         "dependencies": {
+          "BLL": "1.0.0",
+          "DAL": "1.0.0",
           "Microsoft.Xaml.Behaviors.Wpf": "1.1.39",
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },
@@ -176,6 +178,20 @@
             "fileVersion": "7.0.0.0"
           }
         }
+      },
+      "BLL/1.0.0": {
+        "runtime": {
+          "BLL.dll": {}
+        }
+      },
+      "DAL/1.0.0": {
+        "dependencies": {
+          "BLL": "1.0.0",
+          "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
+        },
+        "runtime": {
+          "DAL.dll": {}
+        }
       }
     }
   },
@@ -296,6 +312,16 @@
       "sha512": "sha512-Qk5WB/skSZet5Yrz6AN2ywjZaB1pxfAmvQ+5I4khTkLwwIamI4QJoH2NphCWLFQL+2ar8HvsNCTmwYk0qhqL0w==",
       "path": "pomelo.entityframeworkcore.mysql/7.0.0",
       "hashPath": "pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512"
+    },
+    "BLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

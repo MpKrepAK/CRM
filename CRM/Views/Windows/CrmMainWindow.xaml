@@ -4,9 +4,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:CRM.Views.Windows"
+        xmlns:viewModels="clr-namespace:CRM.ViewModels"
         mc:Ignorable="d"
         Title="CrmMainWindow" Height="1080" Width="1920" WindowState="Maximized" WindowStyle="None">
+    <Window.DataContext>
+        <viewModels:MainWindowVM></viewModels:MainWindowVM>
+    </Window.DataContext>
     <Grid>
-        <Frame></Frame>
+        <Frame Content="{Binding Path=CurrentPage, Mode=TwoWay}"></Frame>
     </Grid>
 </Window>

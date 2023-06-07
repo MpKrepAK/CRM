@@ -279,6 +279,30 @@
             "related": ".xml"
           }
         }
+      },
+      "BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.dll": {}
+        }
+      },
+      "DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "BLL": "1.0.0",
+          "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL.dll": {}
+        }
       }
     }
   },
@@ -702,10 +726,22 @@
         "pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
         "pomelo.entityframeworkcore.mysql.nuspec"
       ]
+    },
+    "BLL/1.0.0": {
+      "type": "project",
+      "path": "../BLL/BLL.csproj",
+      "msbuildProject": "../BLL/BLL.csproj"
+    },
+    "DAL/1.0.0": {
+      "type": "project",
+      "path": "../DAL/DAL.csproj",
+      "msbuildProject": "../DAL/DAL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
+      "BLL >= 1.0.0",
+      "DAL >= 1.0.0",
       "Microsoft.Xaml.Behaviors.Wpf >= 1.1.39",
       "Pomelo.EntityFrameworkCore.MySql >= 7.0.0"
     ]
@@ -740,7 +776,14 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Programming\\Projects\\CRM\\BLL\\BLL.csproj": {
+              "projectPath": "D:\\Programming\\Projects\\CRM\\BLL\\BLL.csproj"
+            },
+            "D:\\Programming\\Projects\\CRM\\DAL\\DAL.csproj": {
+              "projectPath": "D:\\Programming\\Projects\\CRM\\DAL\\DAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

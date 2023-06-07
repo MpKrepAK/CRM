@@ -263,6 +263,16 @@
             "related": ".xml"
           }
         }
+      },
+      "BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.dll": {}
+        }
       }
     }
   },
@@ -661,10 +671,16 @@
         "pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
         "pomelo.entityframeworkcore.mysql.nuspec"
       ]
+    },
+    "BLL/1.0.0": {
+      "type": "project",
+      "path": "../BLL/BLL.csproj",
+      "msbuildProject": "../BLL/BLL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "BLL >= 1.0.0",
       "Pomelo.EntityFrameworkCore.MySql >= 7.0.0"
     ]
   },
@@ -698,7 +714,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Programming\\Projects\\CRM\\BLL\\BLL.csproj": {
+              "projectPath": "D:\\Programming\\Projects\\CRM\\BLL\\BLL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
