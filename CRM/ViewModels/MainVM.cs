@@ -17,7 +17,27 @@ public class MainVM : ViewModelBase
     {
         CurrentPage = new CustomersPage();
     }
+    public void ShowRoles()
+    {
+        CurrentPage = new RolesPage();
+    }
+
+    public void ShowProvider()
+    {
+        CurrentPage = new ProvidersPage();
+    }
     
-    
-    
+    public void ShowUser()
+    {
+        CurrentPage = new UsersPage();
+    }
+
+    public void ShowProductType()
+    {
+        CurrentPage = new ProductTypesPage();
+    }
+    public void ShowProduct()
+    {
+        CurrentPage = new ProductsPage();
+    }
 }

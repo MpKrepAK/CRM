@@ -17,4 +17,20 @@
       <ProjectReference Include="..\DAL\DAL.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Resources\Images\alert-square-svgrepo-com.png" />
+      <Resource Include="Resources\Images\alert.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Images\minus-square-svgrepo-com (1).png" />
+      <None Remove="Resources\Images\minus-square-svgrepo-com.png" />
+      <Resource Include="Resources\Images\minus.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Images\plus.png" />
+      <Resource Include="Resources\Images\plus.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
 </Project>

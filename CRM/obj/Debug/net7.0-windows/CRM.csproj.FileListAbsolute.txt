@@ -46,3 +46,14 @@ D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPage.ba
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\CustomersPage.baml
 D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\BLL.dll
 D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\BLL.pdb
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Resources\MainResources.baml
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\RolesPage.g.cs
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\RolesPage.baml
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\ProvidersPage.g.cs
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\ProvidersPage.baml
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\UsersPage.g.cs
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\UsersPage.baml
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\ProductTypesPage.g.cs
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\ProductTypesPage.baml
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\ProductsPage.g.cs
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\ProductsPage.baml

@@ -1,10 +1,7 @@
-﻿using BLL.Models.Attributes;
-using BLL.Models.Attributes.Interfaces;
-using BLL.Models.Services.Logging.Implementations;
+﻿using System.Windows;
 using DAL.Entitys.Database;
 using DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using BLL.Models.Services.Logging.Interfaces;
 using BLL.Models.Services.Proxy;
 using Exception = System.Exception;
 
@@ -37,15 +34,16 @@ public class CustomerRepository : IRepository<Customer>, IAttributeSerializeble
     {
         try
         {
+            entity.Id = 0;
             _context.Customers.Add(entity);
             await _context.SaveChangesAsync();
             return true;
         }
         catch (Exception e)
         {
+            //MessageBox.Show(e.Message);
             return false;
         }
-        
     }
     
     public async Task<bool> Delete(int id)

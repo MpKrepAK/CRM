@@ -14,4 +14,10 @@
       <ProjectReference Include="..\BLL\BLL.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="PresentationFramework">
+        <HintPath>C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\7.0.5\PresentationFramework.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

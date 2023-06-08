@@ -29,16 +29,47 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Label>
-                    <Label Content="Поставщики"></Label>
-                    <Label Content="Пользователи"></Label>
-                    <Label Content="Продукты"></Label>
-                    <Label Content="Типы продуктов"></Label>
+                    <Label Content="Поставщики">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="ShowProvider" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
+                    <Label Content="Пользователи">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="ShowUser" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
+                    <Label Content="Продукты">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="ShowProduct" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
+                    <Label Content="Типы продуктов">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="ShowProductType" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
                     <Label Content="Заказы"></Label>
+                    <Label Content="Стадии заказа"></Label>
                     <Label Content="Склад"></Label>
                     <Label Content="Задания"></Label>
                     <Label Content="Задания подразделения"></Label>
                     <Label Content="Чат"></Label>
-                    <Label Content="Роли"></Label>
+                    <Label Content="Роли">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="ShowRoles" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
                 </StackPanel>
             </Viewbox>
         </StackPanel>
