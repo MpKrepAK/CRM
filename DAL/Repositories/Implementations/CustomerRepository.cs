@@ -3,6 +3,7 @@ using DAL.Entitys.Database;
 using DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using BLL.Models.Services.Proxy;
+using BLL.Models.Services.Validation;
 using Exception = System.Exception;
 
 namespace DAL.Repositories.Implementations;
@@ -34,6 +35,16 @@ public class CustomerRepository : IRepository<Customer>, IAttributeSerializeble
     {
         try
         {
+            long l;
+            if (!long.TryParse(entity.PhoneNumber, out l))
+            {
+                return false;
+            }
+
+            if (!EmailValidator.IsValidEmail(entity.Email))
+            {
+                return false;
+            }
             entity.Id = 0;
             _context.Customers.Add(entity);
             await _context.SaveChangesAsync();
@@ -76,8 +87,26 @@ public class CustomerRepository : IRepository<Customer>, IAttributeSerializeble
                 return false;
             }
 
+            long l;
+            if (!long.TryParse(entity.PhoneNumber, out l))
+            {
+                return false;
+            }
+
+            if (!EmailValidator.IsValidEmail(entity.Email))
+            {
+                return false;
+            }
+
             e.Email = entity.Email;
             e.PhoneNumber = entity.PhoneNumber;
+            e.FirstName = entity.FirstName;
+            e.MidleName = entity.MidleName;
+            e.LastName = entity.LastName;
+            e.VK = entity.VK;
+            e.Instagram = entity.Instagram;
+            e.Telegram = entity.Telegram;
+            e.Facebook = entity.Facebook;
             _context.Customers.Update(e);
             await _context.SaveChangesAsync();
             return true;

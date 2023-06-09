@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace DAL.Entitys.Database;
 
@@ -9,8 +10,15 @@ public class UserChat
     [ForeignKey("Sender")]
     public int SenderId { get; set; }
     public User Sender { get; set; }
-    [ForeignKey("Recipient")]
-    public int RecipientId { get; set; }
-    public User Recipient { get; set; }
     public DateTime DateTime { get; set; }
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append(this.Id + " " + Sender.FirstName + " " + Sender.LastName+"\n");
+        sb.Append(this.DateTime.ToString()+"\n");
+        sb.Append("\t"+this.Message);        
+        sb.Append("\n");
+
+        return sb.ToString();
+    }
 }

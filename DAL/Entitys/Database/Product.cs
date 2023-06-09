@@ -14,4 +14,9 @@ public class Product
     [ForeignKey("Provider")]
     public int ProviderId { get; set; }
     public Provider Provider { get; set; }
+    public List<Order>? Orders { get; set; }
+    public override string ToString()
+    {
+        return this.Id+"\t"+this.Name;
+    }
 }

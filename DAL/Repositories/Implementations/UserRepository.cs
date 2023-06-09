@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using BLL.Models.Services.Validation;
 using DAL.Entitys.Database;
 using DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,6 @@ public class UserRepository : IRepository<User>
     public async Task<List<User>> GetAll()
     {
         var list = await _context.Users
-            .Include(x=>x.Role)
             .ToListAsync();
         return list;
     }
@@ -23,7 +23,6 @@ public class UserRepository : IRepository<User>
     public async Task<User> GetById(int id)
     {
         var list = await _context.Users
-            .Include(x=>x.Role)
             .FirstOrDefaultAsync(x=>x.Id == id);
         return list;
     }
@@ -32,6 +31,11 @@ public class UserRepository : IRepository<User>
     {
         try
         {
+            var ent = await _context.Users.FirstOrDefaultAsync(x => x.Login == entity.Login);
+            if (ent!=null)
+            {
+                return false;
+            }
             _context.Users.Add(entity);
             await _context.SaveChangesAsync();
             return true;
@@ -67,7 +71,6 @@ public class UserRepository : IRepository<User>
         try
         {
             var e = await _context.Users
-                .Include(x=>x.Role)
                 .FirstOrDefaultAsync(x=>x.Id == id);
             if (e == null)
             {
@@ -77,7 +80,6 @@ public class UserRepository : IRepository<User>
             e.FirstName = entity.FirstName;
             e.MidleName = entity.MidleName;
             e.LastName = entity.LastName;
-            e.RoleId = entity.RoleId;
             e.Login = entity.Login;
             e.Password = entity.Password;
             e.DiskName = entity.DiskName;

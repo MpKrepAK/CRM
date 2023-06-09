@@ -8,7 +8,9 @@ public class Order
     [ForeignKey("Customer")]
     public int CustomerId { get; set; }
     public Customer Customer { get; set; }
-    public List<Product> Products { get; set; }
+    [ForeignKey("Product")]
+    public int ProductId { get; set; }
+    public Product Product { get; set; }
     [ForeignKey("OrderStatus")]
     public int OrderStatusId { get; set; }
     public OrderStatus OrderStatus { get; set; }

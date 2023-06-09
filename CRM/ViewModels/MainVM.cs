@@ -17,10 +17,6 @@ public class MainVM : ViewModelBase
     {
         CurrentPage = new CustomersPage();
     }
-    public void ShowRoles()
-    {
-        CurrentPage = new RolesPage();
-    }
 
     public void ShowProvider()
     {
@@ -39,5 +35,21 @@ public class MainVM : ViewModelBase
     public void ShowProduct()
     {
         CurrentPage = new ProductsPage();
+    }
+    public void ShowOrder()
+    {
+        CurrentPage = new OrdersPage();
+    }
+    public void ShowWarehouse()
+    {
+        CurrentPage = new WarehousesPage();
+    }
+    public void ShowOrderStatus()
+    {
+        CurrentPage = new OrderStatusesPage();
+    }
+    public void ShowChat()
+    {
+        CurrentPage = new ChatsPage();
     }
 }

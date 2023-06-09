@@ -57,19 +57,36 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Label>
-                    <Label Content="Заказы"></Label>
-                    <Label Content="Стадии заказа"></Label>
-                    <Label Content="Склад"></Label>
-                    <Label Content="Задания"></Label>
-                    <Label Content="Задания подразделения"></Label>
-                    <Label Content="Чат"></Label>
-                    <Label Content="Роли">
+                    <Label Content="Заказы">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDown">
-                                <i:CallMethodAction MethodName="ShowRoles" TargetObject="{Binding}"/>
+                                <i:CallMethodAction MethodName="ShowOrder" TargetObject="{Binding}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Label>
+                    <Label Content="Стадии заказа">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="ShowOrderStatus" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
+                    <Label Content="Склад">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="ShowWarehouse" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
+                    
+                    <Label Content="Чат">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="ShowChat" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
+                    <Label Content="Чат"></Label>
                 </StackPanel>
             </Viewbox>
         </StackPanel>

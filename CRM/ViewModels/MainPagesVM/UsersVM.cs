@@ -11,15 +11,6 @@ namespace CRM.ViewModels.MainPagesVM;
 public class UsersVM : ViewModelBase
 {
     private UserRepository rep;
-    private RoleRepository roleRep;
-    
-    private ObservableCollection<Role> _roles;
-
-    public ObservableCollection<Role> Roles
-    {
-        get { return _roles;}
-        set { SetProperty(ref _roles, value); }
-    }
     
     private ObservableCollection<User> _data;
 
@@ -27,14 +18,6 @@ public class UsersVM : ViewModelBase
     {
         get { return _data;}
         set { SetProperty(ref _data, value); }
-    }
-
-    public Role _addRole;
-
-    public Role AddRole
-    {
-        get { return _addRole; }
-        set { SetProperty(ref _addRole, value); }
     }
     
     private User _chosen;
@@ -74,7 +57,6 @@ public class UsersVM : ViewModelBase
     {
         Adding = new User();
         rep = new UserRepository();
-        roleRep = new RoleRepository();
         Fill();
         AddVisible = Visibility.Collapsed;
         InfoVisible = Visibility.Collapsed;
@@ -85,7 +67,6 @@ public class UsersVM : ViewModelBase
         try
         {
             Data = new ObservableCollection<User>(await rep.GetAll());
-            Roles = new ObservableCollection<Role>(await roleRep.GetAll());
         }
         catch (Exception e)
         {
@@ -130,7 +111,6 @@ public class UsersVM : ViewModelBase
 
     public async void AddEntity()
     {
-        Adding.RoleId = AddRole.Id;
         var res = await rep.Add(Adding);
         if (!res)
         {
@@ -146,7 +126,6 @@ public class UsersVM : ViewModelBase
             MessageBox.Show("Выберите объект");
             return;
         }
-        Chosen.RoleId = AddRole.Id;
         var res = await rep.Update(Chosen.Id,Chosen);
         if (!res)
         {

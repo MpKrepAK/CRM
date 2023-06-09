@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using BLL.Models.Services.Validation;
 using DAL.Entitys.Database;
 using DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,16 @@ public class ProviderRepository : IRepository<Provider>
     {
         try
         {
+            long l;
+            if (!long.TryParse(entity.PhoneNumber, out l))
+            {
+                return false;
+            }
+
+            if (!EmailValidator.IsValidEmail(entity.Email))
+            {
+                return false;
+            }
             entity.Id = 0;
             _context.Providers.Add(entity);
             await _context.SaveChangesAsync();
@@ -73,7 +84,16 @@ public class ProviderRepository : IRepository<Provider>
             {
                 return false;
             }
+            long l;
+            if (!long.TryParse(entity.PhoneNumber, out l))
+            {
+                return false;
+            }
 
+            if (!EmailValidator.IsValidEmail(entity.Email))
+            {
+                return false;
+            }
             e.Email = entity.Email;
             e.UrName = entity.UrName;
             e.PhoneNumber = entity.PhoneNumber;

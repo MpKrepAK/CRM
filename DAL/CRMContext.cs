@@ -11,9 +11,6 @@ public class CRMContext : DbContext
     public DbSet<Product> Products { get; set; }=null!;
     public DbSet<ProductType> ProductTypes { get; set; }=null!;
     public DbSet<Provider> Providers { get; set; }=null!;
-    public DbSet<Role> Roles { get; set; }=null!;
-    public DbSet<RoleTask> RoleTasks { get; set; }=null!;
-    public DbSet<UserTask> UserTasks { get; set; }=null!;
     public DbSet<Warehouse> Warehouses { get; set; }=null!;
     public DbSet<UserChat> UserChats { get; set; }=null!;
     public DbSet<OrderStatus> OrderStatuses { get; set; }=null!;
