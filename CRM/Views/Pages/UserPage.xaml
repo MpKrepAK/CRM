@@ -1,0 +1,1092 @@
+﻿<Page x:Class="CRM.Views.Pages.UserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CRM.Views.Pages"
+      xmlns:viewModels="clr-namespace:CRM.ViewModels"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      mc:Ignorable="d"
+      Title="Главная" Height="1080" Width="1920">
+    <Page.DataContext>
+        <viewModels:UserVM></viewModels:UserVM>
+    </Page.DataContext>
+    
+    <Page.Resources>
+        <SolidColorBrush x:Key="Cian" Color="#08D9D6" />
+        <SolidColorBrush x:Key="Black" Color="#252A34" />
+        <SolidColorBrush x:Key="Red" Color="#FF2E63" />
+        <SolidColorBrush x:Key="White" Color="#EAEAEA" />
+        
+        <Style x:Key="FlatDatePickerStyle" TargetType="DatePicker">
+    <Setter Property="Background" Value="{StaticResource White}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="Foreground" Value="{StaticResource Black}" />
+    <Setter Property="Padding" Value="5" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="DatePicker">
+                <Grid>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="PART_TextBox"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     HorizontalContentAlignment="Stretch"
+                                     VerticalContentAlignment="Center"
+                                     IsReadOnly="True"
+                                     Style="{DynamicResource FlatTextBoxStyle}" />
+                            <Button x:Name="PART_Button"
+                                    Grid.Column="1"
+                                    Background="Transparent"
+                                    BorderThickness="0">
+                                <Image Source="/YourProjectNamespace;component/Images/CalendarIcon.png"
+                                       Stretch="None"
+                                       Width="16"
+                                       Height="16" />
+                            </Button>
+                        </Grid>
+                    </Border>
+                    <Popup x:Name="PART_Popup"
+                           Placement="Bottom"
+                           StaysOpen="False"
+                           AllowsTransparency="True">
+                        <Calendar SelectedDate="{Binding SelectedDate, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                    </Popup>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="PART_Button" Property="Cursor" Value="Hand" />
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Opacity" Value="0.5" />
+                    </Trigger>
+                    <Trigger Property="IsDropDownOpen" Value="True">
+                        <Setter TargetName="PART_Popup" Property="IsOpen" Value="True" />
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+        
+        <Style x:Key="FlatDataGridStyle" TargetType="DataGrid">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="RowBackground" Value="Transparent" />
+    <Setter Property="AlternatingRowBackground" Value="Transparent" />
+    <Setter Property="GridLinesVisibility" Value="None" />
+    <Setter Property="AutoGenerateColumns" Value="False" />
+    <Setter Property="RowHeaderWidth" Value="0" />
+    <Setter Property="CellStyle">
+        <Setter.Value>
+            <Style TargetType="DataGridCell">
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="DataGridCell">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Setter.Value>
+    </Setter>
+    <Setter Property="ColumnHeaderStyle">
+        <Setter.Value>
+            <Style TargetType="DataGridColumnHeader">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+        </Setter.Value>
+    </Setter>
+    <Setter Property="RowStyle">
+        <Setter.Value>
+            <Style TargetType="DataGridRow">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="DataGridRow">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Padding="{TemplateBinding Padding}">
+                                <SelectiveScrollingGrid>
+                                    <SelectiveScrollingGrid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </SelectiveScrollingGrid.ColumnDefinitions>
+                                    <SelectiveScrollingGrid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </SelectiveScrollingGrid.RowDefinitions>
+                                    <DataGridCellsPresenter Grid.Column="1"
+                                                            ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    <DataGridDetailsPresenter Grid.Row="1"
+                                                              Grid.Column="1"
+                                                              SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen,
+                                                                                                                                              ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical},
+                                                                                                                                              Converter={x:Static DataGrid.RowDetailsScrollingConverter},
+                                                                                                                                              RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                              Visibility="{TemplateBinding DetailsVisibility}" />
+                                    <DataGridRowHeader Grid.RowSpan="2"
+                                                       SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
+                                                       Visibility="{Binding HeadersVisibility,
+                                                                            ConverterParameter={x:Static DataGridHeadersVisibility.Row},
+                                                                            Converter={x:Static DataGrid.HeadersVisibilityConverter},
+                                                                            RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                                </SelectiveScrollingGrid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Setter.Value>
+    </Setter>
+</Style>
+        
+        <Style x:Key="FlatListBoxStyle" TargetType="ListBox">
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="FontSize" Value="20" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="Black" />
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="ListBox">
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <ScrollViewer Padding="{TemplateBinding Padding}">
+                        <ItemsPresenter />
+                    </ScrollViewer>
+                </Border>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+    <Setter Property="ItemContainerStyle">
+        <Setter.Value>
+            <Style TargetType="ListBoxItem">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Padding="{TemplateBinding Padding}"
+                                    SnapsToDevicePixels="True">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Setter.Value>
+    </Setter>
+</Style>
+        
+        <Style x:Key="FlatButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource Red}" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource White}" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource Cian}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="{StaticResource Cian}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="FlatTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource White}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="CaretBrush" Value="Black" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="PART_ContentHost" Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
+    <Grid
+        Background="{StaticResource White}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Grid
+                Width="450"
+                Height="450"
+                Margin="0 20 0 0"
+            >
+                <Grid.Background>
+                    <ImageBrush></ImageBrush>
+                </Grid.Background>
+            </Grid>
+            
+            <Label
+                Content="Клиенты"
+                FontSize="90"
+                HorizontalAlignment="Center"
+                Margin="0 70 0 0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:CallMethodAction MethodName="V1OpenClose" TargetObject="{Binding}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
+            
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <Grid
+                Width="450"
+                Height="450"
+                Margin="0 20 0 0"
+            >
+                <Grid.Background>
+                    <ImageBrush></ImageBrush>
+                </Grid.Background>
+            </Grid>
+            
+            <Label
+                Content="Статистика"
+                FontSize="90"
+                HorizontalAlignment="Center"
+                Margin="0 70 0 0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:CallMethodAction MethodName="V2OpenClose" TargetObject="{Binding}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
+            
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="3">
+            <Grid
+                Width="450"
+                Height="450"
+                Margin="0 20 0 0"
+            >
+                <Grid.Background>
+                    <ImageBrush></ImageBrush>
+                </Grid.Background>
+            </Grid>
+            
+            <Label
+                Content="Заказы"
+                FontSize="90"
+                HorizontalAlignment="Center"
+                Margin="0 70 0 0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:CallMethodAction MethodName="V3OpenClose" TargetObject="{Binding}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
+            
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="4">
+            <Grid
+                Width="450"
+                Height="450"
+                Margin="0 20 0 0"
+            >
+                <Grid.Background>
+                    <ImageBrush></ImageBrush>
+                </Grid.Background>
+            </Grid>
+            
+            <Label
+                Content="Чат"
+                FontSize="90"
+                HorizontalAlignment="Center"
+                Margin="0 70 0 0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:CallMethodAction MethodName="V4OpenClose" TargetObject="{Binding}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
+            
+        </StackPanel>
+        
+        
+        
+        
+        
+        <Grid Grid.Row="0"
+              Grid.RowSpan="3"
+              Grid.Column="0"
+              Grid.ColumnSpan="6"
+              Visibility="{Binding Path=V1}"
+              Background="{StaticResource White}">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="0.03*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel 
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                        >
+                <Button Style="{StaticResource FlatButtonStyle}"
+                        Content="Назад"
+                        FontSize="40">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="V1OpenClose" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                
+                
+                <Label
+                    Content="Email"
+                    FontSize="32"></Label>
+                <TextBox
+                    FontSize="32"
+                    Text="{Binding Path=Find.Email}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                <Label
+                    Content="Номер телефона"
+                    FontSize="32"></Label>
+                <TextBox
+                    FontSize="32"
+                    Text="{Binding Path=Find.PhoneNumber}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                <Label
+                    Content="Имя"
+                    FontSize="32"></Label>
+                <TextBox
+                    FontSize="32"
+                    Text="{Binding Path=Find.FirstName}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                <Label
+                    Content="Отчество"
+                    FontSize="32"></Label>
+                <TextBox
+                    FontSize="32"
+                    Text="{Binding Path=Find.MidleName}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                <Label
+                    Content="Фамилия"
+                    FontSize="32"></Label>
+                <TextBox
+                    FontSize="32"
+                    Text="{Binding Path=Find.LastName}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                <Label
+                    Content="ВК"
+                    FontSize="32"></Label>
+                <TextBox
+                    FontSize="32"
+                    Text="{Binding Path=Find.VK}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                <Label
+                    Content="Инстаграм"
+                    FontSize="32"></Label>
+                <TextBox
+                    FontSize="32"
+                    Text="{Binding Path=Find.Instagram}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                <Label
+                    Content="Телеграм"
+                    FontSize="32"></Label>
+                <TextBox
+                    FontSize="32"
+                    Text="{Binding Path=Find.Telegram}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                <Label
+                    Content="Фейсбук"
+                    FontSize="32"></Label>
+                <TextBox
+                    FontSize="32"
+                    Text="{Binding Path=Find.Facebook}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                <Button Style="{StaticResource FlatButtonStyle}"
+                        Content="Найти"
+                        FontSize="40">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Search" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button Style="{StaticResource FlatButtonStyle}"
+                        Content="Очистить"
+                        FontSize="40">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Clear" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                
+            </StackPanel>
+            
+            <Grid Grid.Column="1">
+                <ScrollViewer>
+                    <DataGrid x:Name="Grid" CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserResizeRows="False"
+                      CanUserReorderColumns="False"
+                      ItemsSource="{Binding Path=Data}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      FontSize="20"
+                      Style="{StaticResource FlatDataGridStyle}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=Id}"
+                        Header="ID"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=Email}"
+                        Header="Email"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=PhoneNumber}"
+                        Header="Номер телефона"></DataGridTextColumn>
+                    
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=FirstName}"
+                        Header="Имя"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=MidleName}"
+                        Header="Фамилия"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=LastName}"
+                        Header="Отчество"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=VK}"
+                        Header="Ссылка на ВК"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=Instagram}"
+                        Header="Ссылка на Инстаграм"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=Telegram}"
+                        Header="Ссылка на Телеграм"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=Facebook}"
+                        Header="Ссылка на Фейсбук"></DataGridTextColumn>
+                </DataGrid.Columns>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:CallMethodAction MethodName="SelectionChanged" TargetObject="{Binding}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </DataGrid>
+                </ScrollViewer>
+            </Grid>
+            
+            <Grid Grid.Column="2"
+                  Grid.Row="0"
+                  Grid.RowSpan="2">
+                <ScrollViewer>
+                    <StackPanel 
+                    Grid.Column="0"
+                        >
+                    <Label
+                        Content="Информация"
+                        FontSize="48"
+                        HorizontalAlignment="Center"></Label>
+                
+                
+                <Label
+                    Content="Email"
+                    FontSize="32"></Label>
+                <Label
+                    FontSize="32"
+                    Content="{Binding Path=Chosen.Email}"></Label>
+                
+                <Label
+                    Content="Номер телефона"
+                    FontSize="32"></Label>
+                    <Label
+                        FontSize="32"
+                        Content="{Binding Path=Chosen.PhoneNumber}"></Label>
+                
+                <Label
+                    Content="Имя"
+                    FontSize="32"></Label>
+                    <Label
+                        FontSize="32"
+                        Content="{Binding Path=Chosen.FirstName}"></Label>
+                
+                <Label
+                    Content="Отчество"
+                    FontSize="32"></Label>
+                    <Label
+                        FontSize="32"
+                        Content="{Binding Path=Chosen.MidleName}"></Label>
+                
+                <Label
+                    Content="Фамилия"
+                    FontSize="32"></Label>
+                    <Label
+                        FontSize="32"
+                        Content="{Binding Path=Chosen.LastName}"></Label>
+                
+                <Label
+                    Content="ВК"
+                    FontSize="32"></Label>
+                    <Label
+                        FontSize="32"
+                        Content="{Binding Path=Chosen.VK}"></Label>
+                
+                <Label
+                    Content="Инстаграм"
+                    FontSize="32"></Label>
+                    <Label
+                        FontSize="32"
+                        Content="{Binding Path=Chosen.Instagram}"></Label>
+                
+                <Label
+                    Content="Телеграм"
+                    FontSize="32"></Label>
+                    <Label
+                        FontSize="32"
+                        Content="{Binding Path=Chosen.Telegram}"></Label>
+                
+                <Label
+                    Content="Фейсбук"
+                    FontSize="32"></Label>
+                    <Label
+                        FontSize="32"
+                        Content="{Binding Path=Chosen.Facebook}"></Label>
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid
+                        Grid.Column="0"
+                        Width="75"
+                        Height="75">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="../../Resources/Images/vk.png"></ImageBrush>
+                        </Grid.Background>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="Vk" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Grid>
+                    <Grid
+                        Grid.Column="1"
+                        Width="75"
+                        Height="75">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="../../Resources/Images/inst.png"></ImageBrush>
+                        </Grid.Background>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="Inst" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Grid>
+                    <Grid
+                        Grid.Column="2"
+                        Width="75"
+                        Height="75">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="../../Resources/Images/tel.png"></ImageBrush>
+                        </Grid.Background>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="Tel" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Grid>
+                    <Grid
+                        Grid.Column="3"
+                        Width="75"
+                        Height="75">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="../../Resources/Images/fb.png"></ImageBrush>
+                        </Grid.Background>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:CallMethodAction MethodName="Fb" TargetObject="{Binding}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Grid>
+                </Grid>
+                
+            </StackPanel>
+                </ScrollViewer>
+            </Grid>
+            
+            
+        </Grid>
+        
+        
+        <Grid
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="6"
+            Visibility="{Binding Path=V3}"
+            Background="{StaticResource White}">
+            <Grid>
+        <StackPanel>
+            <Menu Background="{StaticResource Red}">
+                <MenuItem>
+                    <MenuItem.Template>
+                        <ControlTemplate>
+                            <Button
+                                Style="{StaticResource FlatButtonStyle}"
+                                Content="Назад">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:CallMethodAction MethodName="V3OpenClose" TargetObject="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </ControlTemplate>
+                    </MenuItem.Template>
+                    
+                </MenuItem>
+                <MenuItem>
+                    <MenuItem.HeaderTemplate>
+                        <ItemContainerTemplate>
+                            <Image Width="32" Height="32" Source="/Resources/Images/plus.png"></Image>
+                        </ItemContainerTemplate>
+                    </MenuItem.HeaderTemplate>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Add" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </MenuItem>
+                <MenuItem>
+                    <MenuItem.HeaderTemplate>
+                        <ItemContainerTemplate>
+                            <Image Width="32" Height="32" Source="/Resources/Images/minus.png"></Image>
+                        </ItemContainerTemplate>
+                    </MenuItem.HeaderTemplate>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="DeleteEntity" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </MenuItem>
+                <MenuItem>
+                    <MenuItem.HeaderTemplate>
+                        <ItemContainerTemplate>
+                            <Image Width="32" Height="32" Source="/Resources/Images/alert.png"></Image>
+                        </ItemContainerTemplate>
+                    </MenuItem.HeaderTemplate>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Info" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </MenuItem>
+            </Menu>
+            
+            <DataGrid CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserResizeRows="False"
+                      CanUserReorderColumns="False"
+                      ItemsSource="{Binding Path=Orders}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      FontSize="24"
+                      Style="{StaticResource FlatDataGridStyle}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=Id}"
+                        Header="ID"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=ProductId}"
+                        Header="Id Продукта"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=CustomerId}"
+                        Header="Id клиента"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=OrderStatusId}"
+                        Header="Id статуса заказа"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=DateTime}"
+                        Header="Дата"></DataGridTextColumn>
+                    
+                </DataGrid.Columns>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:CallMethodAction MethodName="SelectionChangedOrder" TargetObject="{Binding}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </DataGrid>
+        </StackPanel>
+        
+        <!-- {Binding Path=AddVisible} -->
+        <Border
+            Visibility="{Binding Path=AddVisible}">
+            <Grid Width="600" 
+              Height="370"
+              Background="{StaticResource Black}">
+            <StackPanel>
+                <Border Padding="10">
+                    <StackPanel>
+                        <Label Content="Добавление"
+                               FontSize="32"
+                               Foreground="{StaticResource White}"
+                               HorizontalAlignment="Center"></Label>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Продукт"></Label>
+                            <ComboBox Grid.Column="1"
+                                      FontSize="20"
+                                      ItemsSource="{Binding Path=Products}"
+                                      SelectedItem="{Binding Path=AddProduct}"></ComboBox>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Клиент"></Label>
+                            <ComboBox Grid.Column="1"
+                                      FontSize="20"
+                                      ItemsSource="{Binding Path=Data}"
+                                      SelectedItem="{Binding Path=AddCustomer}"></ComboBox>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Статус заказа"></Label>
+                            <ComboBox Grid.Column="1"
+                                      FontSize="20"
+                                      ItemsSource="{Binding Path=OrderStatuses}"
+                                      SelectedItem="{Binding Path=AddOrderStatus}"></ComboBox>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0" 
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Дата"></Label>
+                            <DatePicker Grid.Column="1"
+                                        SelectedDate="{Binding Path=Adding.DateTime}"></DatePicker>
+                        </Grid>
+                        
+                        <Grid Column="0" ColumnSpan="2" Margin="10">
+                            <Button
+                                Style="{StaticResource FlatButtonStyle}"
+                                Content="Добавить">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:CallMethodAction MethodName="AddEntity" TargetObject="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+                
+            </StackPanel>
+            
+        </Grid>
+        </Border>
+        
+        <!-- {Binding Path=InfoVisible} -->
+        <Border
+            Visibility="{Binding Path=InfoVisible}">
+            <Grid Width="600" 
+              Height="370"
+              Background="{StaticResource Black}">
+            <StackPanel>
+                <Border Padding="10">
+                    <StackPanel>
+                        <Label Content="Изменение"
+                               FontSize="32"
+                               Foreground="{StaticResource White}"
+                               HorizontalAlignment="Center"></Label>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Продукт"></Label>
+                            <ComboBox Grid.Column="1"
+                                      FontSize="20"
+                                      ItemsSource="{Binding Path=Products}"
+                                      SelectedItem="{Binding Path=AddProduct}"></ComboBox>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Клиент"></Label>
+                            <ComboBox Grid.Column="1"
+                                      FontSize="20"
+                                      ItemsSource="{Binding Path=Data}"
+                                      SelectedItem="{Binding Path=AddCustomer}"></ComboBox>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Статус заказа"></Label>
+                            <ComboBox Grid.Column="1"
+                                      FontSize="20"
+                                      ItemsSource="{Binding Path=OrderStatuses}"
+                                      SelectedItem="{Binding Path=AddOrderStatus}"></ComboBox>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0" 
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Дата"></Label>
+                            <DatePicker Grid.Column="1"
+                                     SelectedDate="{Binding Path=ChosenOrder.DateTime}"></DatePicker>
+                        </Grid>
+                        
+                        <Grid Column="0" ColumnSpan="2" Margin="10">
+                            <Button
+                                Style="{StaticResource FlatButtonStyle}"
+                                Content="Изменить">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:CallMethodAction MethodName="UpdateEntity" TargetObject="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+                
+            </StackPanel>
+            
+        </Grid>
+        </Border>
+        
+    </Grid>
+        </Grid>
+        
+        
+        
+        <Grid
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="6"
+            Visibility="{Binding Path=V4}"
+            Background="{StaticResource White}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid Grid.Column="0">
+                        <Button Style="{StaticResource 
+                FlatButtonStyle}" 
+                                FontSize="36" 
+                                Content="Назад">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:CallMethodAction MethodName="V4OpenClose" TargetObject="{Binding}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
+                    
+                    <Grid Grid.Column="1">
+                        <TextBox
+                            Style="{StaticResource FlatTextBoxStyle}"
+                            Text="{Binding Path=Message, Mode=TwoWay}"
+                            FontSize="32"
+                        ></TextBox>
+                    </Grid>
+                    
+                    <Grid Grid.Column="2">
+                        <Button Style="{StaticResource 
+                FlatButtonStyle}" 
+                                FontSize="36" 
+                                Content="Отправить">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:CallMethodAction MethodName="Send" TargetObject="{Binding}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
+                </Grid>
+                
+                <Grid Grid.Row="1">
+                    <ListBox
+                        Style="{StaticResource FlatListBoxStyle}"
+                        ItemsSource="{Binding Path=Chat}">
+            
+                    </ListBox>
+                </Grid>
+        
+                
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

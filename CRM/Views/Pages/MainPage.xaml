@@ -7,7 +7,7 @@
       xmlns:viewModels="clr-namespace:CRM.ViewModels"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d"
-      Title="MainPage" Height="1080" Width="1920">
+      Title="Редактура" Height="1080" Width="1920">
     <Page.DataContext>
         <viewModels:MainVM></viewModels:MainVM>
     </Page.DataContext>

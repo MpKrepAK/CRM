@@ -31,6 +31,22 @@
       <Resource Include="Resources\Images\plus.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
+      <None Remove="Resources\Images\fb.png" />
+      <Resource Include="Resources\Images\fb.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Images\inst.png" />
+      <Resource Include="Resources\Images\inst.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Images\tel.png" />
+      <Resource Include="Resources\Images\tel.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Images\vk.png" />
+      <Resource Include="Resources\Images\vk.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
     </ItemGroup>
 
 </Project>

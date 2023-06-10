@@ -65,3 +65,5 @@ D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\CustomControls\ChatMess
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\ChatsPage.g.cs
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\CustomControls\ChatMessage.baml
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\ChatsPage.baml
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\UserPage.g.cs
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\UserPage.baml

@@ -518,7 +518,7 @@
             <StackPanel>
                 <Border Padding="10">
                     <StackPanel>
-                        <Label Content="Добавление"
+                        <Label Content="Изменение"
                                FontSize="32"
                                Foreground="{StaticResource White}"
                                HorizontalAlignment="Center"></Label>
