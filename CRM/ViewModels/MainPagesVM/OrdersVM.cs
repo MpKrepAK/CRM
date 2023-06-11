@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -165,6 +166,7 @@ public class OrdersVM : ViewModelBase
             InfoVisible = Visibility.Collapsed;
         }
     }
+    private WarehouseRepository warehouseRepository;
 
     public async void AddEntity()
     {
@@ -173,6 +175,19 @@ public class OrdersVM : ViewModelBase
             MessageBox.Show("Не все поля заполнены");
             return;
         }
+        
+        warehouseRepository = new WarehouseRepository();
+        
+        var wares= await warehouseRepository.GetAll();
+        
+        var ware = wares.Where(x=>x.ProductId == AddProduct.Id).FirstOrDefault(x=>x.Count>0);
+        if (ware == null)
+        {
+            MessageBox.Show("Товара нет на складе");
+            return;
+        }
+        
+        
         Adding.ProductId = AddProduct.Id;
         Adding.CustomerId = AddCustomer.Id;
         Adding.OrderStatusId = AddOrderStatus.Id;
@@ -180,6 +195,11 @@ public class OrdersVM : ViewModelBase
         if (!res)
         {
             MessageBox.Show("Ошибка при добавлении, вероятно не все поля заполнены или имеют не валидный вид");
+        }
+        else
+        {
+            ware.Count--;
+            warehouseRepository.Update(ware.Id, ware);
         }
         Adding = new Order();
         await Fill();

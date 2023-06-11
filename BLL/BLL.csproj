@@ -7,7 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="EPPlus" Version="7.0.0-preview1" />
       <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+      <PackageReference Include="System.Management" Version="8.0.0-preview.4.23259.5" />
     </ItemGroup>
 
 </Project>

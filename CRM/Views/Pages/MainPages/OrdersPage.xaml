@@ -486,7 +486,6 @@
                                    VerticalAlignment="Center"
                                    Content="Дата"></Label>
                             <DatePicker Grid.Column="1"
-                                     Style="{StaticResource FlatDatePickerStyle}"
                                      SelectedDate="{Binding Path=Adding.DateTime}"></DatePicker>
                         </Grid>
                         
@@ -586,6 +585,8 @@
                                    VerticalAlignment="Center"
                                    Content="Дата"></Label>
                             <DatePicker Grid.Column="1"
+                                        VerticalAlignment="Stretch"
+                                        HorizontalAlignment="Stretch"
                                      SelectedDate="{Binding Path=Chosen.DateTime}"></DatePicker>
                         </Grid>
                         

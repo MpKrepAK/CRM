@@ -299,7 +299,7 @@
                 Margin="0 20 0 0"
             >
                 <Grid.Background>
-                    <ImageBrush></ImageBrush>
+                    <ImageBrush ImageSource="../../Resources/Images/customers.png"></ImageBrush>
                 </Grid.Background>
             </Grid>
             
@@ -324,7 +324,7 @@
                 Margin="0 20 0 0"
             >
                 <Grid.Background>
-                    <ImageBrush></ImageBrush>
+                    <ImageBrush ImageSource="../../Resources/Images/chart.png"></ImageBrush>
                 </Grid.Background>
             </Grid>
             
@@ -349,7 +349,7 @@
                 Margin="0 20 0 0"
             >
                 <Grid.Background>
-                    <ImageBrush></ImageBrush>
+                    <ImageBrush ImageSource="../../Resources/Images/orders.png"></ImageBrush>
                 </Grid.Background>
             </Grid>
             
@@ -374,7 +374,7 @@
                 Margin="0 20 0 0"
             >
                 <Grid.Background>
-                    <ImageBrush></ImageBrush>
+                    <ImageBrush ImageSource="../../Resources/Images/chat.png"></ImageBrush>
                 </Grid.Background>
             </Grid>
             
@@ -392,7 +392,25 @@
             
         </StackPanel>
         
-        
+        <Grid
+            Row="1"
+            Column="2"
+            ColumnSpan="2">
+            <Button
+                Style="{StaticResource FlatButtonStyle}"
+                Content="Выход"
+                FontSize="70"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Width="500">
+                
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:CallMethodAction MethodName="Close" TargetObject="{Binding}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
         
         
         
@@ -725,8 +743,11 @@
             Grid.RowSpan="3"
             Grid.Column="0"
             Grid.ColumnSpan="6"
-            Visibility="Visible"
+            Visibility="{Binding Path=V2}"
             Background="{StaticResource White}">
+            <TabControl>
+                <TabItem Header="Информация о клиентах и заказах">
+                    <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.2*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -739,6 +760,24 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
+            
+            <Grid
+                Grid.Column="0"
+                Row="0">
+                
+                <Button
+                    Style="{StaticResource FlatButtonStyle}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Назад"
+                    FontSize="50">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="V2OpenClose" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
             <Grid
                 Row="0"
                 Column="1">
@@ -778,6 +817,162 @@
                         
                 </lvc:PieChart>  
             </Grid>
+            
+            <Grid
+                Grid.Column="1"
+                Row="2">
+                
+                <Button
+                    Style="{StaticResource FlatButtonStyle}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Вывод в файл"
+                    FontSize="70"
+                    Width="550">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Write1" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            
+            <Grid
+                Grid.Column="3"
+                Row="2">
+                
+                <Button
+                    Style="{StaticResource FlatButtonStyle}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Вывод в файл"
+                    FontSize="70"
+                    Width="550">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="WriteQ" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            
+        </Grid>
+                </TabItem>
+                
+                <TabItem Header="Топ товаров и заказов">
+                    <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Grid
+                Grid.Column="0"
+                Row="0">
+                
+                <Button
+                    Style="{StaticResource FlatButtonStyle}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Назад"
+                    FontSize="50">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="V2OpenClose" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            <Grid
+                Row="0"
+                Column="1">
+                <Label
+                    Content="Топ типов по продажам"
+                    FontSize="44"
+                    HorizontalAlignment="Center"></Label>
+            </Grid>
+            
+            <Grid
+                Row="0"
+                Column="3">
+                <Label
+                    Content="Топ товаров по продажам"
+                    FontSize="44"
+                    HorizontalAlignment="Center"></Label>
+            </Grid>
+            
+            <Grid
+                Grid.Column="1"
+                Row="1">
+                <lvc:PieChart 
+                    LegendLocation="Bottom"
+                    Hoverable="False" DataTooltip="{x:Null}"
+                    Series="{Binding Path=SeriesCollection3}">
+                        
+                </lvc:PieChart>  
+            </Grid>
+            
+            <Grid
+                Grid.Column="3"
+                Row="1">
+                <lvc:PieChart
+                    LegendLocation="Bottom"
+                    Hoverable="False" DataTooltip="{x:Null}"
+                    Series="{Binding Path=SeriesCollection4}">
+                        
+                </lvc:PieChart>  
+            </Grid>
+            
+            <!-- <Grid -->
+            <!--     Grid.Column="1" -->
+            <!--     Row="2"> -->
+            <!--      -->
+            <!--     <Button -->
+            <!--         Style="{StaticResource FlatButtonStyle}" -->
+            <!--         HorizontalAlignment="Center" -->
+            <!--         VerticalAlignment="Center" -->
+            <!--         Content="Вывод в файл" -->
+            <!--         FontSize="70" -->
+            <!--         Width="550"> -->
+            <!--         <i:Interaction.Triggers> -->
+            <!--             <i:EventTrigger EventName="Click"> -->
+            <!--                 <i:CallMethodAction MethodName="Write1" TargetObject="{Binding}"/> -->
+            <!--             </i:EventTrigger> -->
+            <!--         </i:Interaction.Triggers> -->
+            <!--     </Button> -->
+            <!-- </Grid> -->
+            
+            <!-- <Grid -->
+            <!--     Grid.Column="3" -->
+            <!--     Row="2"> -->
+            <!--      -->
+            <!--     <Button -->
+            <!--         Style="{StaticResource FlatButtonStyle}" -->
+            <!--         HorizontalAlignment="Center" -->
+            <!--         VerticalAlignment="Center" -->
+            <!--         Content="Вывод в файл" -->
+            <!--         FontSize="70" -->
+            <!--         Width="550"> -->
+            <!--         <i:Interaction.Triggers> -->
+            <!--             <i:EventTrigger EventName="Click"> -->
+            <!--                 <i:CallMethodAction MethodName="WriteQ" TargetObject="{Binding}"/> -->
+            <!--             </i:EventTrigger> -->
+            <!--         </i:Interaction.Triggers> -->
+            <!--     </Button> -->
+            <!-- </Grid> -->
+            
+        </Grid>
+                </TabItem>
+                
+            </TabControl>
         </Grid>
         
         

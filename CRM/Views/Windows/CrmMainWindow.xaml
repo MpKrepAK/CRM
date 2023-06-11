@@ -11,6 +11,7 @@
         <viewModels:MainWindowVM></viewModels:MainWindowVM>
     </Window.DataContext>
     <Grid>
-        <Frame Content="{Binding Path=CurrentPage, Mode=TwoWay}"></Frame>
+        <Frame Content="{Binding Path=CurrentPage, Mode=TwoWay}"
+               NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

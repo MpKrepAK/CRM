@@ -1,0 +1,1 @@
+Logged Вызван метод GetAll - CustomerRepository

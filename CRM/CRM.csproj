@@ -8,9 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="EPPlus" Version="7.0.0-preview1" />
       <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
       <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+      <PackageReference Include="System.Management" Version="8.0.0-preview.4.23259.5" />
     </ItemGroup>
 
     <ItemGroup>
@@ -46,6 +48,26 @@
       </Resource>
       <None Remove="Resources\Images\vk.png" />
       <Resource Include="Resources\Images\vk.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Images\chat.png" />
+      <Resource Include="Resources\Images\chat.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Images\customers.png" />
+      <Resource Include="Resources\Images\customers.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Images\chart.png" />
+      <Resource Include="Resources\Images\chart.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Images\orders.png" />
+      <Resource Include="Resources\Images\orders.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Images\logo.png" />
+      <Resource Include="Resources\Images\logo.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
     </ItemGroup>

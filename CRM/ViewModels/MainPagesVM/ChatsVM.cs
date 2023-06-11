@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
+using BLL.Models.Services.Logging.Implementations;
+using BLL.Models.Services.Logging.Interfaces;
 using DAL.Entitys.Database;
 using DAL.Repositories.Implementations;
 
@@ -12,7 +14,6 @@ public class ChatsVM : ViewModelBase
     private ChatRepository rep;
     
     private ObservableCollection<UserChat> _data;
-
     public ObservableCollection<UserChat> Data
     {
         get { return _data;}

@@ -1,0 +1,74 @@
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод Add - OrdersRepository
+Logged Успешно завершен метод Add - OrdersRepository
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод Add - OrdersRepository
+Logged Успешно завершен метод Add - OrdersRepository
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод Add - OrdersRepository
+Logged Успешно завершен метод Add - OrdersRepository
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод Add - OrdersRepository
+Logged Успешно завершен метод Add - OrdersRepository
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод Add - OrdersRepository
+Logged Успешно завершен метод Add - OrdersRepository
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод Add - OrdersRepository
+Logged Успешно завершен метод Add - OrdersRepository
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод Add - OrdersRepository
+Logged Успешно завершен метод Add - OrdersRepository
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository

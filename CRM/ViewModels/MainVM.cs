@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using CRM.Views.Pages.MainPages;
 
 namespace CRM.ViewModels;
@@ -51,5 +52,9 @@ public class MainVM : ViewModelBase
     public void ShowChat()
     {
         CurrentPage = new ChatsPage();
+    }
+    public void Close()
+    {
+        Application.Current.Shutdown();
     }
 }

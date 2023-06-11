@@ -344,9 +344,6 @@
                     <DataGridTextColumn 
                         Binding="{Binding Path=DiskName}"
                         Header="Номер USB ключа"></DataGridTextColumn>
-                    <DataGridTextColumn 
-                        Binding="{Binding Path=.RoleId}"
-                        Header="ID роли"></DataGridTextColumn>
                     
                 </DataGrid.Columns>
                 <i:Interaction.Triggers>

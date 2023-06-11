@@ -69,3 +69,16 @@ D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\UserPage.g.
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\UserPage.baml
 D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\LiveCharts.dll
 D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\LiveCharts.Wpf.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\EPPlus.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\EPPlus.Interfaces.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\EPPlus.System.Drawing.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\Microsoft.Extensions.Configuration.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\Microsoft.Extensions.Configuration.Json.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\System.CodeDom.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\System.Management.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Management.dll

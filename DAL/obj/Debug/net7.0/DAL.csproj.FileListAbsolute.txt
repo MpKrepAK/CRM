@@ -17,12 +17,9 @@ D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\System.Windows.Input.Manipulati
 D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\System.Security.Cryptography.Xml.dll
 D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\System.Windows.Forms.dll
 D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\System.DirectoryServices.dll
-D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\System.Drawing.Common.dll
 D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\System.Windows.Forms.Primitives.dll
 D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\System.Diagnostics.EventLog.dll
 D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
-D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
-D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
 D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\BLL.pdb
 D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\cs\PresentationFramework.resources.dll
 D:\Programming\Projects\CRM\DAL\bin\Debug\net7.0\de\PresentationFramework.resources.dll

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.JavaScript;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using DAL.Repositories.Implementations;
 using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
+using OfficeOpenXml;
 
 namespace CRM.ViewModels;
 
@@ -108,6 +110,20 @@ public class UserVM : ViewModelBase
         set { SetProperty(ref _series2, value); }
     }
     
+    private SeriesCollection _series3;
+    public SeriesCollection SeriesCollection3
+    {
+        get { return _series3;}
+        set { SetProperty(ref _series3, value); }
+    }
+    
+    private SeriesCollection _series4;
+    public SeriesCollection SeriesCollection4
+    {
+        get { return _series4;}
+        set { SetProperty(ref _series4, value); }
+    }
+    
     public UserVM()
     {
         Adding = new Order();
@@ -142,7 +158,7 @@ public class UserVM : ViewModelBase
     {
         while (true)
         {
-            await Task.Delay(1000);
+            await Task.Delay(2000);
             var list = await chatRepository.GetAll();
             list.Reverse();
             Chat = new ObservableCollection<UserChat>(list);
@@ -160,7 +176,7 @@ public class UserVM : ViewModelBase
         var mes = new UserChat();
         mes.DateTime = DateTime.Now;
         mes.Message = Message;
-        mes.SenderId = 1;
+        mes.SenderId = ApplicationData.User.Id;
         await chatRepository.Add(mes);
         Message = "";
         //mes.SenderId = ApplicationData.User.Id;
@@ -188,6 +204,112 @@ public class UserVM : ViewModelBase
         else
         {
             V2 = Visibility.Collapsed;
+        }
+    }
+
+    public void Write1()
+    {
+        try
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            string filename = $"{new Random().Next()}.xlsx";
+            var newFile = new FileInfo(filename);
+            int row = 1;
+            using (var package = new ExcelPackage(newFile))
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Otchet");
+
+                worksheet.Cells[$"A{row}"].Value = "Id";
+                worksheet.Cells[$"B{row}"].Value = "Email";
+                worksheet.Cells[$"C{row}"].Value = "Номер телефона";
+                worksheet.Cells[$"D{row}"].Value = "Имя";
+                worksheet.Cells[$"E{row}"].Value = "Фамилия";
+                worksheet.Cells[$"F{row}"].Value = "Отчество";
+                worksheet.Cells[$"G{row}"].Value = "ВК";
+                worksheet.Cells[$"H{row}"].Value = "Фейсбук";
+                worksheet.Cells[$"I{row}"].Value = "Инстаграм";
+                worksheet.Cells[$"J{row}"].Value = "Телеграм";
+                row++;
+                foreach (var item in Data)
+                {
+                    worksheet.Cells[$"A{row}"].Value = item.Id.ToString();
+                    worksheet.Cells[$"B{row}"].Value = item.Email;
+                    worksheet.Cells[$"C{row}"].Value = item.PhoneNumber;
+                    worksheet.Cells[$"D{row}"].Value = item.FirstName;
+                    worksheet.Cells[$"E{row}"].Value = item.LastName;
+                    worksheet.Cells[$"F{row}"].Value = item.MidleName;
+                    worksheet.Cells[$"G{row}"].Value = item.VK;
+                    worksheet.Cells[$"H{row}"].Value = item.Facebook;
+                    worksheet.Cells[$"I{row}"].Value = item.Instagram;
+                    worksheet.Cells[$"J{row}"].Value = item.Telegram;
+                    row++;
+                }
+
+                package.Save();
+            }
+        
+            if (File.Exists(filename))
+            {
+                try
+                {
+                    Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+                }
+                catch (Exception e)
+                {
+                }
+            }
+        }
+        catch (Exception e)
+        {
+        }
+    }
+    
+    public void WriteQ()
+    {
+        try
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            string filename = $"{new Random().Next()}.xlsx";
+            var newFile = new FileInfo(filename);
+            int row = 1;
+            using (var package = new ExcelPackage(newFile))
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Otchet");
+
+                worksheet.Cells[$"A{row}"].Value = "Id";
+                worksheet.Cells[$"B{row}"].Value = "ФИО клиента";
+                worksheet.Cells[$"C{row}"].Value = "Дата";
+                worksheet.Cells[$"D{row}"].Value = "Тип товара";
+                worksheet.Cells[$"E{row}"].Value = "Товар";
+                worksheet.Cells[$"F{row}"].Value = "Статус заказа";
+                row++;
+                foreach (var item in Orders)
+                {
+                    worksheet.Cells[$"A{row}"].Value = item.Id.ToString();
+                    worksheet.Cells[$"B{row}"].Value = item.Customer.FirstName+" "+ item.Customer.MidleName+" "+ item.Customer.LastName;
+                    worksheet.Cells[$"C{row}"].Value = item.DateTime.ToString();
+                    worksheet.Cells[$"D{row}"].Value = item.Product.ProductType.Name;
+                    worksheet.Cells[$"E{row}"].Value = item.Product.Name;
+                    worksheet.Cells[$"F{row}"].Value = item.OrderStatus.Name;
+                    row++;
+                }
+
+                package.Save();
+            }
+        
+            if (File.Exists(filename))
+            {
+                try
+                {
+                    Process.Start(new ProcessStartInfo(filename) { UseShellExecute = true });
+                }
+                catch (Exception e)
+                {
+                }
+            }
+        }
+        catch (Exception e)
+        {
         }
     }
 
@@ -251,6 +373,40 @@ public class UserVM : ViewModelBase
             });
         }
 
+        var types = Orders
+            .Select(x=>x.Product.ProductType.Name)
+            .GroupBy(x=>x)
+            .Select(x=>new {String = x.Key, Count = x.Count()});
+
+        SeriesCollection3 = new SeriesCollection();
+        
+        foreach (var item in types)
+        {
+            SeriesCollection3.Add(new PieSeries()
+            {
+                Title = $"{item.String}",
+                Values = new ChartValues<ObservableValue> { new ObservableValue(item.Count) },
+                DataLabels = true
+            });
+        }
+        
+        
+        var prods = Orders
+            .Select(x=>x.Product.Name)
+            .GroupBy(x=>x)
+            .Select(x=>new {String = x.Key, Count = x.Count()});
+
+        SeriesCollection4 = new SeriesCollection();
+        
+        foreach (var item in prods)
+        {
+            SeriesCollection4.Add(new PieSeries()
+            {
+                Title = $"{item.String}",
+                Values = new ChartValues<ObservableValue> { new ObservableValue(item.Count) },
+                DataLabels = true
+            });
+        }
 
 
     }
@@ -525,6 +681,8 @@ public class UserVM : ViewModelBase
         get { return _adding;}
         set { SetProperty(ref _adding, value); }
     }
+
+    private WarehouseRepository warehouseRepository;
     
     public async void AddEntity()
     {
@@ -533,6 +691,19 @@ public class UserVM : ViewModelBase
             MessageBox.Show("Не все поля заполнены");
             return;
         }
+
+        warehouseRepository = new WarehouseRepository();
+        
+        var wares= await warehouseRepository.GetAll();
+        
+        var ware = wares.Where(x=>x.ProductId == AddProduct.Id).FirstOrDefault(x=>x.Count>0);
+        if (ware == null)
+        {
+            MessageBox.Show("Товара нет на складе");
+            return;
+        }
+        
+        
         Adding.ProductId = AddProduct.Id;
         Adding.CustomerId = AddCustomer.Id;
         Adding.OrderStatusId = AddOrderStatus.Id;
@@ -540,6 +711,12 @@ public class UserVM : ViewModelBase
         if (!res)
         {
             MessageBox.Show("Ошибка при добавлении, вероятно не все поля заполнены или имеют не валидный вид");
+            
+        }
+        else
+        {
+            ware.Count--;
+            warehouseRepository.Update(ware.Id, ware);
         }
         Adding = new Order();
         await Fill();

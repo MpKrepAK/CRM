@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using BLL.Models.Services.Logging.Implementations;
+using BLL.Models.Services.Logging.Interfaces;
 using DAL.Entitys.Database;
 using DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -8,13 +10,16 @@ namespace DAL.Repositories.Implementations;
 public class ChatRepository : IRepository<UserChat>
 {
     private CRMContext _context;
+    private ILogger _logger;
     public ChatRepository()
     {
+        _logger = new FileLogger();
         _context = new CRMContext();
     }
     
     public async Task<List<UserChat>> GetAll()
     {
+        _logger.Log("Вызван метод GetAll - ChatRepository");
         var list = await _context.UserChats
             .Include(x=>x.Sender)
             .ToListAsync();
