@@ -67,3 +67,5 @@ D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\CustomControls\ChatMess
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\ChatsPage.baml
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\UserPage.g.cs
 D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\UserPage.baml
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\LiveCharts.dll
+D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\LiveCharts.Wpf.dll

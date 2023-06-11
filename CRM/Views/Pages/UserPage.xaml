@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:CRM.Views.Pages"
       xmlns:viewModels="clr-namespace:CRM.ViewModels"
       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d"
       Title="Главная" Height="1080" Width="1920">
     <Page.DataContext>
@@ -716,6 +717,67 @@
             </Grid>
             
             
+        </Grid>
+        
+        
+        <Grid
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="6"
+            Visibility="Visible"
+            Background="{StaticResource White}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid
+                Row="0"
+                Column="1">
+                <Label
+                    Content="Полнота информации о клиентах"
+                    FontSize="44"
+                    HorizontalAlignment="Center"></Label>
+            </Grid>
+            
+            <Grid
+                Row="0"
+                Column="3">
+                <Label
+                    Content="Информация о заказах"
+                    FontSize="44"
+                    HorizontalAlignment="Center"></Label>
+            </Grid>
+            
+            <Grid
+                Grid.Column="1"
+                Row="1">
+                <lvc:PieChart 
+                    LegendLocation="Bottom"
+                    Hoverable="False" DataTooltip="{x:Null}"
+                    Series="{Binding Path=SeriesCollection1}">
+                        
+                </lvc:PieChart>  
+            </Grid>
+            
+            <Grid
+                Grid.Column="3"
+                Row="1">
+                <lvc:PieChart
+                    LegendLocation="Bottom"
+                    Hoverable="False" DataTooltip="{x:Null}"
+                    Series="{Binding Path=SeriesCollection2}">
+                        
+                </lvc:PieChart>  
+            </Grid>
         </Grid>
         
         

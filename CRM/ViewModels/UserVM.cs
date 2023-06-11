@@ -9,6 +9,9 @@ using System.Windows;
 using System.Windows.Controls;
 using DAL.Entitys.Database;
 using DAL.Repositories.Implementations;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
 
 namespace CRM.ViewModels;
 
@@ -88,6 +91,23 @@ public class UserVM : ViewModelBase
         get { return _chosen; }
         set { SetProperty(ref _chosen, value); }
     }
+
+
+
+    private SeriesCollection _series1;
+    public SeriesCollection SeriesCollection1
+    {
+        get { return _series1;}
+        set { SetProperty(ref _series1, value); }
+    }
+    
+    private SeriesCollection _series2;
+    public SeriesCollection SeriesCollection2
+    {
+        get { return _series2;}
+        set { SetProperty(ref _series2, value); }
+    }
+    
     public UserVM()
     {
         Adding = new Order();
@@ -162,12 +182,77 @@ public class UserVM : ViewModelBase
     {
         if (V2 == Visibility.Collapsed)
         {
+            FillCharts();
             V2 = Visibility.Visible;
         }
         else
         {
             V2 = Visibility.Collapsed;
         }
+    }
+
+    private void FillCharts()
+    {
+        var count = Data.Count*4;
+        var vk = Data.Where(x => !String.IsNullOrEmpty(x.VK)).Count();
+        var fb = Data.Where(x => !String.IsNullOrEmpty(x.Facebook)).Count();
+        var inst = Data.Where(x => !String.IsNullOrEmpty(x.Instagram)).Count();
+        var tg = Data.Where(x => !String.IsNullOrEmpty(x.Telegram)).Count();
+        count = count - (vk + fb + inst + tg);
+        SeriesCollection1 = new SeriesCollection
+        {
+            new PieSeries
+            {
+                Title = "ВК",
+                Values = new ChartValues<ObservableValue> { new ObservableValue(vk) },
+                DataLabels = true
+            },
+            new PieSeries
+            {
+                Title = "Фейсбук",
+                Values = new ChartValues<ObservableValue> { new ObservableValue(fb) },
+                DataLabels = true
+            },
+            new PieSeries
+            {
+                Title = "Инстаграм",
+                Values = new ChartValues<ObservableValue> { new ObservableValue(inst) },
+                DataLabels = true
+            },
+            new PieSeries
+            {
+                Title = "Телеграм",
+                Values = new ChartValues<ObservableValue> { new ObservableValue(tg) },
+                DataLabels = true
+            },
+            new PieSeries
+            {
+                Title = "Данные не известны",
+                Values = new ChartValues<ObservableValue> { new ObservableValue(count) },
+                DataLabels = true
+            }
+        };
+        
+        
+        var ord = Orders
+            .Select(x=>x.OrderStatus.Name)
+            .GroupBy(x=>x)
+            .Select(x=>new {String = x.Key, Count = x.Count()});
+
+        SeriesCollection2 = new SeriesCollection();
+        
+        foreach (var item in ord)
+        {
+            SeriesCollection2.Add(new PieSeries()
+            {
+                Title = $"{item.String}",
+                Values = new ChartValues<ObservableValue> { new ObservableValue(item.Count) },
+                DataLabels = true
+            });
+        }
+
+
+
     }
     
     public void V3OpenClose()
