@@ -226,6 +226,16 @@
                     <DataGridTextColumn 
                         Binding="{Binding Path=PhoneNumber}"
                         Header="Номер телефона"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=Age}"
+                        Header="Возраст"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=DateOfRegistration}"
+                        Header="Дата регистрации"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=HeardAboutUsFrom}"
+                        Header="Источник информации о нас"></DataGridTextColumn>
+                    
                     
                     <DataGridTextColumn 
                         Binding="{Binding Path=FirstName}"
@@ -257,11 +267,11 @@
             </DataGrid>
         </StackPanel>
         
-        
+        <!-- {Binding Path=AddVisible} -->
         <Border
             Visibility="{Binding Path=AddVisible}">
             <Grid Width="600" 
-              Height="640"
+              Height="820"
               Background="{StaticResource Black}">
             <StackPanel>
                 <Border Padding="10">
@@ -302,6 +312,53 @@
                             <TextBox Grid.Column="1"
                                      Style="{StaticResource FlatTextBoxStyle}"
                                      Text="{Binding Path=Adding.PhoneNumber}"></TextBox>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Возраст"></Label>
+                            <TextBox Grid.Column="1"
+                                     Style="{StaticResource FlatTextBoxStyle}"
+                                     Text="{Binding Path=Adding.Age}"></TextBox>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Дата регистрации"></Label>
+                            <DatePicker Grid.Column="1"
+                                     SelectedDate="{Binding Path=Adding.DateOfRegistration}"></DatePicker>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Откуда узнали о нас"></Label>
+                            <TextBox Grid.Column="1"
+                                     Style="{StaticResource FlatTextBoxStyle}"
+                                     Text="{Binding Path=Adding.HeardAboutUsFrom}"></TextBox>
                         </Grid>
                         
                         <Grid Margin="10">
@@ -438,12 +495,12 @@
         <Border
             Visibility="{Binding Path=InfoVisible}">
             <Grid Width="600" 
-              Height="640"
+              Height="820"
               Background="{StaticResource Black}">
             <StackPanel>
                 <Border Padding="10">
                     <StackPanel>
-                        <Label Content="Добавление"
+                        <Label Content="Изменение"
                                FontSize="32"
                                Foreground="{StaticResource White}"
                                HorizontalAlignment="Center"></Label>
@@ -479,6 +536,53 @@
                             <TextBox Grid.Column="1"
                                      Style="{StaticResource FlatTextBoxStyle}"
                                      Text="{Binding Path=Chosen.PhoneNumber}"></TextBox>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Возраст"></Label>
+                            <TextBox Grid.Column="1"
+                                     Style="{StaticResource FlatTextBoxStyle}"
+                                     Text="{Binding Path=Chosen.Age}"></TextBox>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Дата регистрации"></Label>
+                            <DatePicker Grid.Column="1"
+                                        SelectedDate="{Binding Path=Chosen.DateOfRegistration}"></DatePicker>
+                        </Grid>
+                        
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                    
+                            <Label Grid.Column="0"
+                                   Foreground="{StaticResource White}"
+                                   FontSize="20"
+                                   VerticalAlignment="Center"
+                                   Content="Откуда узнали о нас"></Label>
+                            <TextBox Grid.Column="1"
+                                     Style="{StaticResource FlatTextBoxStyle}"
+                                     Text="{Binding Path=Chosen.HeardAboutUsFrom}"></TextBox>
                         </Grid>
                         
                         <Grid Margin="10">

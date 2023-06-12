@@ -336,11 +336,11 @@
                         Binding="{Binding Path=Cost}"
                         Header="Цена"></DataGridTextColumn>
                     <DataGridTextColumn 
-                        Binding="{Binding Path=ProductTypeId}"
-                        Header="ID типа продукта"></DataGridTextColumn>
+                        Binding="{Binding Path=ProductType}"
+                        Header="Тип продукта"></DataGridTextColumn>
                     <DataGridTextColumn 
-                        Binding="{Binding Path=ProviderId}"
-                        Header="ID поставщика"></DataGridTextColumn>
+                        Binding="{Binding Path=Provider}"
+                        Header="Поставщик"></DataGridTextColumn>
                     
                 </DataGrid.Columns>
                 <i:Interaction.Triggers>

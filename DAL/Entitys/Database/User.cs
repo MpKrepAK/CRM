@@ -12,4 +12,8 @@ public class User
     public string Password { get; set; }
     public string DiskName { get; set; }
     public List<UserChat>? Chats { get; set; }
+    public override string ToString()
+    {
+        return this.Id+" "+this.LastName+" "+this.FirstName+" "+this.MidleName;
+    }
 }

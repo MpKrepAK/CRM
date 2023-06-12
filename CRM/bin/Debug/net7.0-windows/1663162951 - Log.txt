@@ -1,0 +1,7 @@
+Logged Вызван метод GetAll - UserRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод Add - CustomerRepository
+LoggedError Ошибка при выполнении метода Add - CustomerRepository -An error occurred while saving the entity changes. See the inner exception for details.
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод Add - CustomerRepository
+Logged Вызван метод GetAll - CustomerRepository

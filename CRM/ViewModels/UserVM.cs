@@ -139,6 +139,18 @@ public class UserVM : ViewModelBase
         V4 = Visibility.Collapsed;
         AddVisible = Visibility.Collapsed;
         InfoVisible = Visibility.Collapsed;
+        PlotDate = DateTime.Now;
+        Labels = new List<string>()
+        {
+            new string("Новые"),
+            new string("Постоянные")
+        };
+        Labels2 = new List<string>()
+        {
+            new string("Прошлый год"),
+            new string("Текущий"),
+            new string("Следующий")
+        };
         Fill();
         Update();
     }
@@ -313,104 +325,228 @@ public class UserVM : ViewModelBase
         }
     }
 
-    private void FillCharts()
+    public void FillCharts()
     {
-        var count = Data.Count*4;
-        var vk = Data.Where(x => !String.IsNullOrEmpty(x.VK)).Count();
-        var fb = Data.Where(x => !String.IsNullOrEmpty(x.Facebook)).Count();
-        var inst = Data.Where(x => !String.IsNullOrEmpty(x.Instagram)).Count();
-        var tg = Data.Where(x => !String.IsNullOrEmpty(x.Telegram)).Count();
-        count = count - (vk + fb + inst + tg);
-        SeriesCollection1 = new SeriesCollection
+        try
         {
-            new PieSeries
+            var count = Data.Count*4;
+            var vk = Data.Where(x => !String.IsNullOrEmpty(x.VK)).Count();
+            var fb = Data.Where(x => !String.IsNullOrEmpty(x.Facebook)).Count();
+            var inst = Data.Where(x => !String.IsNullOrEmpty(x.Instagram)).Count();
+            var tg = Data.Where(x => !String.IsNullOrEmpty(x.Telegram)).Count();
+            count = count - (vk + fb + inst + tg);
+            SeriesCollection1 = new SeriesCollection
             {
-                Title = "ВК",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(vk) },
-                DataLabels = true
-            },
-            new PieSeries
+                new PieSeries
+                {
+                    Title = "ВК",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(vk) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Фейсбук",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(fb) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Инстаграм",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(inst) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Телеграм",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(tg) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Данные не известны",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(count) },
+                    DataLabels = true
+                }
+            };
+        
+        
+            var ord = Orders
+                .Select(x=>x.OrderStatus.Name)
+                .GroupBy(x=>x)
+                .Select(x=>new {String = x.Key, Count = x.Count()});
+
+            SeriesCollection2 = new SeriesCollection();
+        
+            foreach (var item in ord)
             {
-                Title = "Фейсбук",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(fb) },
-                DataLabels = true
-            },
-            new PieSeries
-            {
-                Title = "Инстаграм",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(inst) },
-                DataLabels = true
-            },
-            new PieSeries
-            {
-                Title = "Телеграм",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(tg) },
-                DataLabels = true
-            },
-            new PieSeries
-            {
-                Title = "Данные не известны",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(count) },
-                DataLabels = true
+                SeriesCollection2.Add(new PieSeries()
+                {
+                    Title = $"{item.String}",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(item.Count) },
+                    DataLabels = true
+                });
             }
-        };
-        
-        
-        var ord = Orders
-            .Select(x=>x.OrderStatus.Name)
-            .GroupBy(x=>x)
-            .Select(x=>new {String = x.Key, Count = x.Count()});
 
-        SeriesCollection2 = new SeriesCollection();
+            var types = Orders
+                .Select(x=>x.Product.ProductType.Name)
+                .GroupBy(x=>x)
+                .Select(x=>new {String = x.Key, Count = x.Count()});
+
+            SeriesCollection3 = new SeriesCollection();
         
-        foreach (var item in ord)
-        {
-            SeriesCollection2.Add(new PieSeries()
+            foreach (var item in types)
             {
-                Title = $"{item.String}",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(item.Count) },
-                DataLabels = true
-            });
-        }
-
-        var types = Orders
-            .Select(x=>x.Product.ProductType.Name)
-            .GroupBy(x=>x)
-            .Select(x=>new {String = x.Key, Count = x.Count()});
-
-        SeriesCollection3 = new SeriesCollection();
+                SeriesCollection3.Add(new PieSeries()
+                {
+                    Title = $"{item.String}",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(item.Count) },
+                    DataLabels = true
+                });
+            }
         
-        foreach (var item in types)
-        {
-            SeriesCollection3.Add(new PieSeries()
+        
+            var prods = Orders
+                .Select(x=>x.Product.Name)
+                .GroupBy(x=>x)
+                .Select(x=>new {String = x.Key, Count = x.Count()});
+
+            SeriesCollection4 = new SeriesCollection();
+        
+            foreach (var item in prods)
             {
-                Title = $"{item.String}",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(item.Count) },
-                DataLabels = true
-            });
-        }
-        
-        
-        var prods = Orders
-            .Select(x=>x.Product.Name)
-            .GroupBy(x=>x)
-            .Select(x=>new {String = x.Key, Count = x.Count()});
+                SeriesCollection4.Add(new PieSeries()
+                {
+                    Title = $"{item.String}",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(item.Count) },
+                    DataLabels = true
+                });
+            }
 
-        SeriesCollection4 = new SeriesCollection();
         
-        foreach (var item in prods)
-        {
-            SeriesCollection4.Add(new PieSeries()
+        
+            SeriesCollection5 = new SeriesCollection();
+
+            var orders = Orders.Select(x=>x);
+
+            var newCust = new List<Order>();
+            var oldCust = new List<Order>();
+            PlotDate =new DateTime(PlotDate.Year, PlotDate.Month, 1);
+            foreach (var item in orders)
             {
-                Title = $"{item.String}",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(item.Count) },
-                DataLabels = true
-            });
-        }
+                if (item.DateTime.Year==PlotDate.Year && PlotDate.Month==item.DateTime.Month)
+                {
+                    if (item.Customer.DateOfRegistration>=PlotDate&&item.Customer.DateOfRegistration<=PlotDate.AddMonths(1))
+                    {
+                        newCust.Add(item);
+                    }
+                    else
+                    {
+                        oldCust.Add(item);
+                    }
+                }
+            
+            }
 
+            var newChart = new ChartValues<int>();
+            var oldChart = new ChartValues<int>();
+
+            for (int i = 0; i < DateTime.DaysInMonth(PlotDate.Year, PlotDate.Month); i++)
+            {
+                oldChart.Add(0);
+                newChart.Add(0);
+            }
+
+            foreach (var item in newCust)
+            {
+                newChart[item.DateTime.Day]+=1;
+            }
+            foreach (var item in oldCust)
+            {
+                oldChart[item.DateTime.Day]+=1;
+            }
+        
+        
+            SeriesCollection5.Add(
+                new LineSeries
+                {
+                    Title = "Новые",
+                    Values = newChart
+                }
+            );
+            SeriesCollection5.Add(
+                new LineSeries
+                {
+                    Title = "Старые",
+                    Values = oldChart
+                }
+            );
+
+
+            SeriesCollection6 = new SeriesCollection();
+            var oldYear = new ChartValues<int>();
+            var thisYear = new ChartValues<int>();
+            var nextYear = new ChartValues<int>();
+            for (int i = 0; i < 12; i++)
+            {
+                oldYear.Add(0);
+                thisYear.Add(0);
+                nextYear.Add(0);
+            }
+
+            foreach (var item in orders.Where(x => x.DateTime.Year == PlotDate.Year))
+            {
+                thisYear[item.DateTime.Month]+=1;
+            }
+            foreach (var item in orders.Where(x => x.DateTime.Year < PlotDate.Year))
+            {
+                oldYear[item.DateTime.Month]+=1;
+            }
+            foreach (var item in orders.Where(x => x.DateTime.Year > PlotDate.Year))
+            {
+                nextYear[item.DateTime.Month]+=1;
+            }
+        
+        
+        
+            SeriesCollection6.Add(
+                new LineSeries
+                {
+                    Title = "Прошлый год",
+                    Values = oldYear
+                });
+        
+            SeriesCollection6.Add(
+                new LineSeries
+                {
+                    Title = "Текущий год",
+                    Values = thisYear
+                });
+        
+            SeriesCollection6.Add(
+                new LineSeries
+                {
+                    Title = "Следующий год",
+                    Values = nextYear
+                });
+        }
+        catch (Exception e)
+        {
+            throw;
+        }
 
     }
-    
+    public void Close()
+    {
+        Application.Current.Shutdown();
+    }
+    private DateTime _plotDate;
+
+    public DateTime PlotDate
+    {
+        get { return _plotDate; }
+        set { SetProperty(ref _plotDate, value); }
+    }
+    public Func<int, string> YFormatter { get; set; }
     public void V3OpenClose()
     {
         if (V3 == Visibility.Collapsed)
@@ -780,5 +916,38 @@ public class UserVM : ViewModelBase
         {
             InfoVisible = Visibility.Collapsed;
         }
+    }
+
+    private List<string> _labels;
+    public List<string> Labels
+    {
+        get { return _labels;}
+        set { SetProperty(ref _labels, value); }
+    }
+
+    private SeriesCollection _series5;
+
+    public SeriesCollection SeriesCollection5
+    {
+        get { return _series5;}
+        set { SetProperty(ref _series5, value); }
+
+    }
+    
+    
+    private List<string> _labels2;
+    public List<string> Labels2
+    {
+        get { return _labels2;}
+        set { SetProperty(ref _labels2, value); }
+    }
+    
+    private SeriesCollection _series6;
+
+    public SeriesCollection SeriesCollection6
+    {
+        get { return _series5;}
+        set { SetProperty(ref _series5, value); }
+
     }
 }

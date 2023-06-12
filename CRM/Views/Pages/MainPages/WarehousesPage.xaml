@@ -327,8 +327,8 @@
                         Binding="{Binding Path=Id}"
                         Header="ID"></DataGridTextColumn>
                     <DataGridTextColumn 
-                        Binding="{Binding Path=ProductId}"
-                        Header="Id Продукта"></DataGridTextColumn>
+                        Binding="{Binding Path=Product}"
+                        Header="Продукт"></DataGridTextColumn>
                     <DataGridTextColumn 
                         Binding="{Binding Path=Count}"
                         Header="Количество"></DataGridTextColumn>

@@ -1,0 +1,7 @@
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод Add - CustomerRepository
+Logged Успешно завершен метод Add - CustomerRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод Update - CustomerRepository
+Logged Успешно завершен метод Update - CustomerRepository
+Logged Вызван метод GetAll - CustomerRepository

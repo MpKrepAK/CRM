@@ -119,6 +119,9 @@ public class CustomerRepository : IRepository<Customer>, IAttributeSerializeble
             e.Instagram = entity.Instagram;
             e.Telegram = entity.Telegram;
             e.Facebook = entity.Facebook;
+            e.HeardAboutUsFrom = entity.HeardAboutUsFrom;
+            e.Age = entity.Age;
+            e.DateOfRegistration = entity.DateOfRegistration;
             _context.Customers.Update(e);
             await _context.SaveChangesAsync();
             _logger.Log("Успешно завершен метод Update - CustomerRepository");

@@ -1,0 +1,3 @@
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - UserRepository

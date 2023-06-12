@@ -14,6 +14,9 @@ public class Customer
     public string? Instagram { get; set; }
     public string? Telegram { get; set; }
     public string? Facebook { get; set; }
+    public int? Age { get; set; }
+    public DateTime DateOfRegistration { get; set; }
+    public string HeardAboutUsFrom { get; set; }
     public override string ToString()
     {
         return this.Id+"\t"+this.Email;

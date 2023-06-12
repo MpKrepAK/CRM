@@ -388,14 +388,14 @@
                         Binding="{Binding Path=Id}"
                         Header="ID"></DataGridTextColumn>
                     <DataGridTextColumn 
-                        Binding="{Binding Path=ProductId}"
-                        Header="Id Продукта"></DataGridTextColumn>
+                        Binding="{Binding Path=Product}"
+                        Header="Продукт"></DataGridTextColumn>
                     <DataGridTextColumn 
-                        Binding="{Binding Path=CustomerId}"
-                        Header="Id клиента"></DataGridTextColumn>
+                        Binding="{Binding Path=Customer}"
+                        Header="Клиент"></DataGridTextColumn>
                     <DataGridTextColumn 
-                        Binding="{Binding Path=OrderStatusId}"
-                        Header="Id статуса заказа"></DataGridTextColumn>
+                        Binding="{Binding Path=OrderStatus}"
+                        Header="Статус заказа"></DataGridTextColumn>
                     <DataGridTextColumn 
                         Binding="{Binding Path=DateTime}"
                         Header="Дата"></DataGridTextColumn>

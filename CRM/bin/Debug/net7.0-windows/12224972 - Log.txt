@@ -1,0 +1,5 @@
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - ChatRepository

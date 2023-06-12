@@ -1,0 +1,15 @@
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - ProductTypeRepository
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод GetAll - ProductRepository

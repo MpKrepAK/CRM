@@ -19,6 +19,7 @@
         <SolidColorBrush x:Key="Red" Color="#FF2E63" />
         <SolidColorBrush x:Key="White" Color="#EAEAEA" />
         
+        
         <Style x:Key="FlatDatePickerStyle" TargetType="DatePicker">
     <Setter Property="Background" Value="{StaticResource White}" />
     <Setter Property="BorderBrush" Value="Transparent" />
@@ -392,6 +393,8 @@
             
         </StackPanel>
         
+        
+        
         <Grid
             Row="1"
             Column="2"
@@ -405,15 +408,14 @@
                 Width="500">
                 
                 <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseDown">
+                    <i:EventTrigger EventName="Click">
                         <i:CallMethodAction MethodName="Close" TargetObject="{Binding}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
         </Grid>
         
-        
-        
+        <!-- {Binding Path=V1} -->
         <Grid Grid.Row="0"
               Grid.RowSpan="3"
               Grid.Column="0"
@@ -422,9 +424,9 @@
               Background="{StaticResource White}">
             
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                <ColumnDefinition Width="0.25*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                <ColumnDefinition Width="0.3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
             <Grid.RowDefinitions>
@@ -449,75 +451,94 @@
                 
                 <Label
                     Content="Email"
-                    FontSize="32"></Label>
+                    FontSize="24"></Label>
                 <TextBox
-                    FontSize="32"
+                    FontSize="24"
                     Text="{Binding Path=Find.Email}"
                     Style="{StaticResource FlatTextBoxStyle}"></TextBox>
                 
                 <Label
                     Content="Номер телефона"
-                    FontSize="32"></Label>
+                    FontSize="24"></Label>
                 <TextBox
-                    FontSize="32"
+                    FontSize="24"
                     Text="{Binding Path=Find.PhoneNumber}"
                     Style="{StaticResource FlatTextBoxStyle}"></TextBox>
                 
                 <Label
                     Content="Имя"
-                    FontSize="32"></Label>
+                    FontSize="24"></Label>
                 <TextBox
-                    FontSize="32"
+                    FontSize="24"
                     Text="{Binding Path=Find.FirstName}"
                     Style="{StaticResource FlatTextBoxStyle}"></TextBox>
                 
                 <Label
                     Content="Отчество"
-                    FontSize="32"></Label>
+                    FontSize="24"></Label>
                 <TextBox
-                    FontSize="32"
+                    FontSize="24"
                     Text="{Binding Path=Find.MidleName}"
                     Style="{StaticResource FlatTextBoxStyle}"></TextBox>
                 
                 <Label
                     Content="Фамилия"
-                    FontSize="32"></Label>
+                    FontSize="24"></Label>
                 <TextBox
-                    FontSize="32"
+                    FontSize="24"
                     Text="{Binding Path=Find.LastName}"
                     Style="{StaticResource FlatTextBoxStyle}"></TextBox>
                 
                 <Label
-                    Content="ВК"
-                    FontSize="32"></Label>
+                    Content="Возраст"
+                    FontSize="24"></Label>
                 <TextBox
-                    FontSize="32"
+                    FontSize="24"
+                    Text="{Binding Path=Find.Age}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                <Label
+                    Content="Источник информации о нас"
+                    FontSize="20"></Label>
+                <TextBox
+                    FontSize="24"
+                    Text="{Binding Path=Find.HeardAboutUsFrom}"
+                    Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
+                
+                
+                <Label
+                    Content="ВК"
+                    FontSize="24"></Label>
+                <TextBox
+                    FontSize="24"
                     Text="{Binding Path=Find.VK}"
                     Style="{StaticResource FlatTextBoxStyle}"></TextBox>
                 
                 <Label
                     Content="Инстаграм"
-                    FontSize="32"></Label>
+                    FontSize="24"></Label>
                 <TextBox
-                    FontSize="32"
+                    FontSize="24"
                     Text="{Binding Path=Find.Instagram}"
                     Style="{StaticResource FlatTextBoxStyle}"></TextBox>
                 
                 <Label
                     Content="Телеграм"
-                    FontSize="32"></Label>
+                    FontSize="24"></Label>
                 <TextBox
-                    FontSize="32"
+                    FontSize="24"
                     Text="{Binding Path=Find.Telegram}"
                     Style="{StaticResource FlatTextBoxStyle}"></TextBox>
                 
                 <Label
                     Content="Фейсбук"
-                    FontSize="32"></Label>
+                    FontSize="24"></Label>
                 <TextBox
-                    FontSize="32"
+                    FontSize="24"
                     Text="{Binding Path=Find.Facebook}"
                     Style="{StaticResource FlatTextBoxStyle}"></TextBox>
+                
                 
                 <Button Style="{StaticResource FlatButtonStyle}"
                         Content="Найти"
@@ -561,6 +582,15 @@
                     <DataGridTextColumn 
                         Binding="{Binding Path=PhoneNumber}"
                         Header="Номер телефона"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=Age}"
+                        Header="Возраст"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=DateOfRegistration}"
+                        Header="Дата регистрации"></DataGridTextColumn>
+                    <DataGridTextColumn 
+                        Binding="{Binding Path=HeardAboutUsFrom}"
+                        Header="Источник информации о нас"></DataGridTextColumn>
                     
                     <DataGridTextColumn 
                         Binding="{Binding Path=FirstName}"
@@ -737,7 +767,7 @@
             
         </Grid>
         
-        
+        <!-- {Binding Path=V2} -->
         <Grid
             Grid.Row="0"
             Grid.RowSpan="3"
@@ -746,6 +776,7 @@
             Visibility="{Binding Path=V2}"
             Background="{StaticResource White}">
             <TabControl>
+                
                 <TabItem Header="Информация о клиентах и заказах">
                     <Grid>
             <Grid.ColumnDefinitions>
@@ -760,11 +791,11 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
-            
+        
             <Grid
                 Grid.Column="0"
                 Row="0">
-                
+        
                 <Button
                     Style="{StaticResource FlatButtonStyle}"
                     HorizontalAlignment="Center"
@@ -786,7 +817,7 @@
                     FontSize="44"
                     HorizontalAlignment="Center"></Label>
             </Grid>
-            
+        
             <Grid
                 Row="0"
                 Column="3">
@@ -795,18 +826,18 @@
                     FontSize="44"
                     HorizontalAlignment="Center"></Label>
             </Grid>
-            
+        
             <Grid
                 Grid.Column="1"
                 Row="1">
-                <lvc:PieChart 
+                <lvc:PieChart
                     LegendLocation="Bottom"
                     Hoverable="False" DataTooltip="{x:Null}"
                     Series="{Binding Path=SeriesCollection1}">
-                        
-                </lvc:PieChart>  
+        
+                </lvc:PieChart>
             </Grid>
-            
+        
             <Grid
                 Grid.Column="3"
                 Row="1">
@@ -814,14 +845,14 @@
                     LegendLocation="Bottom"
                     Hoverable="False" DataTooltip="{x:Null}"
                     Series="{Binding Path=SeriesCollection2}">
-                        
-                </lvc:PieChart>  
+        
+                </lvc:PieChart>
             </Grid>
-            
+        
             <Grid
                 Grid.Column="1"
                 Row="2">
-                
+        
                 <Button
                     Style="{StaticResource FlatButtonStyle}"
                     HorizontalAlignment="Center"
@@ -836,11 +867,11 @@
                     </i:Interaction.Triggers>
                 </Button>
             </Grid>
-            
+        
             <Grid
                 Grid.Column="3"
                 Row="2">
-                
+        
                 <Button
                     Style="{StaticResource FlatButtonStyle}"
                     HorizontalAlignment="Center"
@@ -855,10 +886,10 @@
                     </i:Interaction.Triggers>
                 </Button>
             </Grid>
-            
+        
         </Grid>
                 </TabItem>
-                
+        
                 <TabItem Header="Топ товаров и заказов">
                     <Grid>
             <Grid.ColumnDefinitions>
@@ -873,11 +904,11 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
-            
+        
             <Grid
                 Grid.Column="0"
                 Row="0">
-                
+        
                 <Button
                     Style="{StaticResource FlatButtonStyle}"
                     HorizontalAlignment="Center"
@@ -899,7 +930,7 @@
                     FontSize="44"
                     HorizontalAlignment="Center"></Label>
             </Grid>
-            
+        
             <Grid
                 Row="0"
                 Column="3">
@@ -908,18 +939,18 @@
                     FontSize="44"
                     HorizontalAlignment="Center"></Label>
             </Grid>
-            
+        
             <Grid
                 Grid.Column="1"
                 Row="1">
-                <lvc:PieChart 
+                <lvc:PieChart
                     LegendLocation="Bottom"
                     Hoverable="False" DataTooltip="{x:Null}"
                     Series="{Binding Path=SeriesCollection3}">
-                        
-                </lvc:PieChart>  
+        
+                </lvc:PieChart>
             </Grid>
-            
+        
             <Grid
                 Grid.Column="3"
                 Row="1">
@@ -927,10 +958,10 @@
                     LegendLocation="Bottom"
                     Hoverable="False" DataTooltip="{x:Null}"
                     Series="{Binding Path=SeriesCollection4}">
-                        
-                </lvc:PieChart>  
+        
+                </lvc:PieChart>
             </Grid>
-            
+        
             <!-- <Grid -->
             <!--     Grid.Column="1" -->
             <!--     Row="2"> -->
@@ -949,7 +980,7 @@
             <!--         </i:Interaction.Triggers> -->
             <!--     </Button> -->
             <!-- </Grid> -->
-            
+        
             <!-- <Grid -->
             <!--     Grid.Column="3" -->
             <!--     Row="2"> -->
@@ -968,8 +999,112 @@
             <!--         </i:Interaction.Triggers> -->
             <!--     </Button> -->
             <!-- </Grid> -->
-            
+        
         </Grid>
+                </TabItem>
+                
+                <TabItem Header="Статистика по времени">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.1*"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid
+                            Grid.Column="0"
+                            Row="0">
+                            
+                            <Button
+                                Style="{StaticResource FlatButtonStyle}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="Назад"
+                                FontSize="50">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:CallMethodAction MethodName="V2OpenClose" TargetObject="{Binding}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </Grid>
+                        
+                        <Grid
+                            Column="0"
+                            Row="1">
+                            <StackPanel Margin="0 100 0 0">
+                                <DatePicker
+                                    SelectedDate="{Binding Path=PlotDate}">
+                                    
+                                </DatePicker>
+                                
+                                <Button
+                                    Style="{StaticResource FlatButtonStyle}"
+                                    VerticalAlignment="Center"
+                                    Content="Найти"
+                                    FontSize="25">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:CallMethodAction MethodName="FillCharts" TargetObject="{Binding}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                        
+                        <Grid
+                            Row="0"
+                            Column="1">
+                            
+                            <Label
+                                Content="Постоянные и новые клиенты"
+                                FontSize="44"
+                                HorizontalAlignment="Center"></Label>
+                        </Grid>
+                        
+                        <Grid
+                            Row="0"
+                            Column="3">
+                            <Label
+                                Content="Продажи по годам"
+                                FontSize="44"
+                                HorizontalAlignment="Center"></Label>
+                        </Grid>
+            
+                        <Grid
+                            Grid.Column="1"
+                            Row="1">
+                                <lvc:CartesianChart Series="{Binding SeriesCollection5}" LegendLocation="Right" >
+                                    <lvc:CartesianChart.AxisY>
+                                        <lvc:Axis Title="Продажи" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                                    </lvc:CartesianChart.AxisY>
+                                    <lvc:CartesianChart.AxisX>
+                                        <lvc:Axis Title="Дни" Labels="{Binding Labels}"></lvc:Axis>
+                                    </lvc:CartesianChart.AxisX>
+                                </lvc:CartesianChart>
+                        </Grid>
+            
+                        <Grid
+                            Grid.Column="3"
+                            Row="1">
+                            <lvc:CartesianChart Series="{Binding SeriesCollection6}" LegendLocation="Right" >
+                                <lvc:CartesianChart.AxisY>
+                                    <lvc:Axis Title="Продажи" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisY>
+                                <lvc:CartesianChart.AxisX>
+                                    <lvc:Axis Title="Месяц" Labels="{Binding Labels2}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisX>
+                            </lvc:CartesianChart>
+                        </Grid>
+                    </Grid>
+                    
                 </TabItem>
                 
             </TabControl>
@@ -1054,14 +1189,14 @@
                         Binding="{Binding Path=Id}"
                         Header="ID"></DataGridTextColumn>
                     <DataGridTextColumn 
-                        Binding="{Binding Path=ProductId}"
-                        Header="Id Продукта"></DataGridTextColumn>
+                        Binding="{Binding Path=Product}"
+                        Header="Продукт"></DataGridTextColumn>
                     <DataGridTextColumn 
-                        Binding="{Binding Path=CustomerId}"
-                        Header="Id клиента"></DataGridTextColumn>
+                        Binding="{Binding Path=Customer}"
+                        Header="Клиент"></DataGridTextColumn>
                     <DataGridTextColumn 
-                        Binding="{Binding Path=OrderStatusId}"
-                        Header="Id статуса заказа"></DataGridTextColumn>
+                        Binding="{Binding Path=OrderStatus}"
+                        Header="Статус заказа"></DataGridTextColumn>
                     <DataGridTextColumn 
                         Binding="{Binding Path=DateTime}"
                         Header="Дата"></DataGridTextColumn>
@@ -1277,7 +1412,6 @@
         </Grid>
         
         
-        
         <Grid
             Grid.Row="0"
             Grid.RowSpan="3"
@@ -1345,5 +1479,6 @@
                 
             </Grid>
         </Grid>
+        
     </Grid>
 </Page>
