@@ -1,0 +1,14 @@
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод Add - ProviderRepository
+Logged Успешно завершен метод Add - ProviderRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод GetAll - ProductRepository

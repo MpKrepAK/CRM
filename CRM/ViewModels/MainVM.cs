@@ -53,6 +53,10 @@ public class MainVM : ViewModelBase
     {
         CurrentPage = new ChatsPage();
     }
+    public void ShowSupplies()
+    {
+        CurrentPage = new SuppliesesPage();
+    }
     public void Close()
     {
         Application.Current.Shutdown();

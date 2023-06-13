@@ -1,0 +1,60 @@
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод Add - CustomerRepository
+Logged Успешно завершен метод Add - CustomerRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод Add - ProviderRepository
+Logged Успешно завершен метод Add - ProviderRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - UserRepository
+Logged Вызван метод Add - UserRepository
+Logged Успешно завершен метод Add - UserRepository
+Logged Вызван метод GetAll - UserRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - ProductTypeRepository
+Logged Вызван метод GetAll - ProductTypeRepository
+Logged Вызван метод Add - ProductTypeRepository
+Logged Успешно завершен метод Add - ProductTypeRepository
+Logged Вызван метод GetAll - ProductTypeRepository
+Logged Вызван метод GetAll - OrdersRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод Add - OrderStatusRepository
+Logged Успешно завершен метод Add - OrderStatusRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - ProductTypeRepository
+Logged Вызван метод Add - ProductRepository
+Logged Успешно завершен метод Add - ProductRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - ProductTypeRepository
+Logged Вызван метод GetAll - OrderStatusRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод Add - WarehouseRepository
+Logged Успешно завершен метод Add - WarehouseRepository
+Logged Вызван метод GetAll - WarehouseRepository
+Logged Вызван метод GetAll - ProductRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository
+Logged Вызван метод GetAll - ChatRepository

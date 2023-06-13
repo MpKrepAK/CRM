@@ -38,6 +38,10 @@ public class WarehouseRepository : IRepository<Warehouse>
         _logger.Log("Вызван метод Add - WarehouseRepository");
         try
         {
+            if (entity.Count<=0)
+            {
+                return false;
+            }
             entity.Id = 0;
             _context.Warehouses.Add(entity);
             await _context.SaveChangesAsync();
@@ -84,7 +88,10 @@ public class WarehouseRepository : IRepository<Warehouse>
             {
                 return false;
             }
-
+            if (entity.Count<=0)
+            {
+                return false;
+            }
             e.ProductId = entity.ProductId;
             e.Count = entity.Count;
             _context.Warehouses.Update(e);

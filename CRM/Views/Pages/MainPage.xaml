@@ -13,7 +13,7 @@
     </Page.DataContext>
     <Page.Resources>
         <Style TargetType="Label">
-            <Setter Property="FontSize" Value="48"></Setter>
+            <Setter Property="FontSize" Value="40"></Setter>
             <Setter Property="Margin" Value="10 0 0 20"></Setter>
         </Style>
         
@@ -344,6 +344,13 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Label>
+                <Label Content="Поставки">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <i:CallMethodAction MethodName="ShowSupplies" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Label>
                 <Button Content="Выйти"
                         Style="{StaticResource FlatButtonStyle}"
                         FontSize="70"

@@ -82,3 +82,5 @@ D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\Microsoft.IO.Recyclable
 D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\System.CodeDom.dll
 D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\System.Management.dll
 D:\Programming\Projects\CRM\CRM\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\SuppliesesPage.g.cs
+D:\Programming\Projects\CRM\CRM\obj\Debug\net7.0-windows\Views\Pages\MainPages\SuppliesesPage.baml

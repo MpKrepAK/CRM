@@ -26,8 +26,8 @@ public class LoginVM : ViewModelBase
     }
     public void Login(object sender, RoutedEventArgs args)
     {
-        //MainWindowVM.Instance.CurrentPage = new MainPage();
-        MainWindowVM.Instance.CurrentPage = new UserPage();
+        MainWindowVM.Instance.CurrentPage = new MainPage();
+        //MainWindowVM.Instance.CurrentPage = new UserPage();
         //Loging();
     }
 

@@ -52,6 +52,11 @@ public class CustomerRepository : IRepository<Customer>, IAttributeSerializeble
             {
                 return false;
             }
+
+            if (entity.Age<=0)
+            {
+                return false;
+            }
             entity.Id = 0;
             _context.Customers.Add(entity);
             await _context.SaveChangesAsync();
@@ -109,7 +114,10 @@ public class CustomerRepository : IRepository<Customer>, IAttributeSerializeble
             {
                 return false;
             }
-
+            if (entity.Age<=0)
+            {
+                return false;
+            }
             e.Email = entity.Email;
             e.PhoneNumber = entity.PhoneNumber;
             e.FirstName = entity.FirstName;

@@ -41,6 +41,10 @@ public class ProductRepository : IRepository<Product>
         _logger.Log("Вызван метод Add - ProductRepository");
         try
         {
+            if (entity.Cost<=0)
+            {
+                return false;
+            }
             entity.Id = 0;
             _context.Products.Add(entity);
             await _context.SaveChangesAsync();
@@ -81,6 +85,10 @@ public class ProductRepository : IRepository<Product>
         _logger.Log("Вызван метод Update - ProductRepository");
         try
         {
+            if (entity.Cost<=0)
+            {
+                return false;
+            }
             var e = await _context.Products
                 .FirstOrDefaultAsync(x=>x.Id == id);
             if (e == null)

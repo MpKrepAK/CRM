@@ -14,6 +14,7 @@ public class CRMContext : DbContext
     public DbSet<Warehouse> Warehouses { get; set; }=null!;
     public DbSet<UserChat> UserChats { get; set; }=null!;
     public DbSet<OrderStatus> OrderStatuses { get; set; }=null!;
+    public DbSet<Supplies> Supplieses { get; set; }=null!;
 
     public CRMContext() : base()
     {
