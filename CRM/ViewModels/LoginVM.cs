@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using CRM.Views.Pages;
+using DAL;
 using DAL.Entitys.DTO;
 using DAL.Repositories.Implementations;
 
@@ -24,12 +25,16 @@ public class LoginVM : ViewModelBase
         LoginData = new LoginDTO();
         Visibility = Visibility.Collapsed;
         Visibility2 = Visibility.Collapsed;
+        // using (CRMContext db = new CRMContext())
+        // {
+        //     db.Start(10000);
+        // }
     }
     public void Login(object sender, RoutedEventArgs args)
     {
         //MainWindowVM.Instance.CurrentPage = new MainPage();
-        //MainWindowVM.Instance.CurrentPage = new UserPage();
-        Loging();
+        MainWindowVM.Instance.CurrentPage = new UserPage();
+        //Loging();
     }
 
     private async Task Loging()

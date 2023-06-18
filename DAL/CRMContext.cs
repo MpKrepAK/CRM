@@ -26,7 +26,7 @@ public class CRMContext : DbContext
             new MySqlServerVersion(new Version(8, 0, 33)));
     }
 
-    private void Start()
+    public void Start(int orders)
     {
         ProductTypes.Add(new ProductType(){Name = "Книга"});
         ProductTypes.Add(new ProductType(){Name = "Тетрадь"});
@@ -46,7 +46,7 @@ public class CRMContext : DbContext
             });
         }
         SaveChanges();
-
+        
         for (int i = 0; i < 10; i++)
         {
             int r = new Random().Next(0,5);
@@ -131,7 +131,7 @@ public class CRMContext : DbContext
             }
         }
         SaveChanges();
-
+        
         Providers.Add(new Provider()
         {
             UrName = "ООО Книга",
@@ -145,7 +145,7 @@ public class CRMContext : DbContext
             Email = "asd2@mail.ru"
         });
         SaveChanges();
-
+        
         OrderStatuses.Add(new OrderStatus()
         {
             Name = "На складе"
@@ -155,20 +155,20 @@ public class CRMContext : DbContext
             Name = "Доставлен"
         });
         SaveChanges();
-
+        
         for (int i = 0; i < 100; i++)
         {
             Products.Add(new Product()
             {
                 Name = i.ToString(),
-                ProductTypeId = new Random().Next(0,2),
-                ProviderId = new Random().Next(0,1),
+                ProductTypeId = new Random().Next(1,4),
+                ProviderId = new Random().Next(1,3),
                 Info = i+"info",
                 Cost = new Random().Next(5,15)
             });
         }
         SaveChanges();
-
+        
         for (int i = 0; i < 100; i++)
         {
             Warehouses.Add(new Warehouse()
@@ -178,15 +178,15 @@ public class CRMContext : DbContext
             });
         }
         SaveChanges();
-
-        for (int i = 0; i < 1000; i++)
+    
+        for (int i = 0; i < orders; i++)
         {
             Orders.Add(new Order()
             {
-                OrderStatusId = new Random().Next(0, 1),
-                CustomerId = new Random().Next(0, 100),
-                ProductId = new Random().Next(0, 100),
-                DateTime = new DateTime(new Random().Next(2020, 2023), new Random().Next(1, 12),
+                OrderStatusId = new Random().Next(1, 3),
+                CustomerId = new Random().Next(1, 10),
+                ProductId = new Random().Next(1, 100),
+                DateTime = new DateTime(new Random().Next(2020, 2024), new Random().Next(1, 13),
                     new Random().Next(1, 28))
             });
         }

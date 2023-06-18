@@ -495,15 +495,15 @@ public class UserVM : ViewModelBase
 
             foreach (var item in orders.Where(x => x.DateTime.Year == PlotDate.Year))
             {
-                thisYear[item.DateTime.Month]+=1;
+                thisYear[item.DateTime.Month-1]+=1;
             }
             foreach (var item in orders.Where(x => x.DateTime.Year < PlotDate.Year))
             {
-                oldYear[item.DateTime.Month]+=1;
+                oldYear[item.DateTime.Month-1]+=1;
             }
             foreach (var item in orders.Where(x => x.DateTime.Year > PlotDate.Year))
             {
-                nextYear[item.DateTime.Month]+=1;
+                nextYear[item.DateTime.Month-1]+=1;
             }
         
         
