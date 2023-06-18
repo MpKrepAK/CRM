@@ -1,0 +1,12 @@
+Logged Вызван метод GetAll - ProductTypeRepository
+Logged Вызван метод Add - ProductTypeRepository
+Logged Успешно завершен метод Add - ProductTypeRepository
+Logged Вызван метод GetAll - ProductTypeRepository
+Logged Вызван метод Add - ProductTypeRepository
+Logged Успешно завершен метод Add - ProductTypeRepository
+Logged Вызван метод GetAll - ProductTypeRepository
+Logged Вызван метод GetAll - UserRepository
+Logged Вызван метод GetAll - ProviderRepository
+Logged Вызван метод GetAll - UserRepository
+Logged Вызван метод GetAll - CustomerRepository
+Logged Вызван метод Add - CustomerRepository

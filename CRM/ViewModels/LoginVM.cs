@@ -23,12 +23,13 @@ public class LoginVM : ViewModelBase
     {
         LoginData = new LoginDTO();
         Visibility = Visibility.Collapsed;
+        Visibility2 = Visibility.Collapsed;
     }
     public void Login(object sender, RoutedEventArgs args)
     {
-        MainWindowVM.Instance.CurrentPage = new MainPage();
+        //MainWindowVM.Instance.CurrentPage = new MainPage();
         //MainWindowVM.Instance.CurrentPage = new UserPage();
-        //Loging();
+        Loging();
     }
 
     private async Task Loging()
@@ -107,5 +108,26 @@ public class LoginVM : ViewModelBase
     {
         get { return _visibility; }
         set { SetProperty(ref _visibility, value); }
+    }
+    
+    
+    public void Info2()
+    {
+        if (Visibility2 == Visibility.Collapsed)
+        {
+            Visibility2 = Visibility.Visible;
+        }
+        else
+        {
+            Visibility2 = Visibility.Collapsed;
+        }
+    }
+    
+    private Visibility _visibility2;
+
+    public Visibility Visibility2
+    {
+        get { return _visibility2; }
+        set { SetProperty(ref _visibility2, value); }
     }
 }

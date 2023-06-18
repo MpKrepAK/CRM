@@ -16,7 +16,7 @@ public class CRMContext : DbContext
     public DbSet<OrderStatus> OrderStatuses { get; set; }=null!;
     public DbSet<Supplies> Supplieses { get; set; }=null!;
 
-    public CRMContext() : base()
+    public CRMContext()
     {
         Database.EnsureCreated();
     }

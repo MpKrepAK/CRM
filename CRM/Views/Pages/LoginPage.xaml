@@ -299,6 +299,18 @@
                 </Button>
             </Grid>
         
+            <Grid Grid.Column="2" Grid.Row="0">
+                <Button Content="!"
+                        Style="{StaticResource FlatButtonStyle}"
+                        FontSize="50">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Info2" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+        
         
             <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -350,8 +362,7 @@
                   VerticalAlignment="Center">
                 <Button Content="Выйти"
                         Style="{StaticResource FlatButtonStyle}"
-                        FontSize="100"
-                        Height="150"
+                        FontSize="80"
                         Width="400">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
@@ -366,8 +377,7 @@
                   VerticalAlignment="Center">
                 <Button Content="Войти"
                         Style="{StaticResource FlatButtonStyle}"
-                        FontSize="100"
-                        Height="150"
+                        FontSize="80"
                         Width="400">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
@@ -459,6 +469,141 @@
                         * Максимович Д.С.
                     </TextBlock>
                             </Border>
+                </StackPanel>
+            </Border>
+            
+        </Grid>
+        
+        <!-- {Binding Path=Visibility2} -->
+        <Grid 
+            Grid.Column="1" 
+            Grid.Row="1"
+            Background="{StaticResource White}"
+            Visibility="{Binding Path=Visibility2}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            
+            <Grid
+                Row="0"
+                Column="2">
+                <Button
+                    Style="{StaticResource FlatButtonStyle}"
+                    Content="X"
+                    FontSize="50">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:CallMethodAction MethodName="Info2" TargetObject="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            
+            <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="3"
+                Padding="30">
+                
+                <StackPanel Background="{StaticResource Cian}">
+                    
+                    <Border
+                        Padding="20" MaxHeight="700">
+                        <ScrollViewer>
+                                <StackPanel>
+                            <TextBlock
+                                Foreground="{StaticResource White}"
+                                TextWrapping="Wrap"
+                                FontSize="36"
+                                Margin="0 0 0 30">
+                                Программа предоставляет 2 вида прав доступа:
+                            </TextBlock>
+                            
+                            <TextBlock
+                                Foreground="{StaticResource White}"
+                                TextWrapping="Wrap"
+                                FontSize="36"
+                                Margin="0 0 0 20">
+                                * С правами администратора. Для этого необходимо вставить админское USB устройство и ввести любые данные авторизации. С этими провами доступа вы можете изменять данные в таблицах, оформлять поставки и вести мониторинг данных.
+                            </TextBlock>
+                            
+                            <TextBlock
+                                Foreground="{StaticResource White}"
+                                TextWrapping="Wrap"
+                                FontSize="36"
+                                Margin="0 0 0 20">
+                                * С правами обычного пользователя. Для этого необходимо вставить USB устройство привязанное к пользователь и данные авторизации. При успешной авторизации, вы увидете 4 вкладки.
+                            </TextBlock>
+                            <TextBlock
+                                Foreground="{StaticResource White}"
+                                TextWrapping="Wrap"
+                                FontSize="28"
+                                Margin="60 0 0 20">
+                                1 вкладка связана с клиентами. Здесь вы можете просматривать информацию о клиентах и связи с ними.
+                            </TextBlock>
+                            
+                            <TextBlock
+                                Foreground="{StaticResource White}"
+                                TextWrapping="Wrap"
+                                FontSize="28"
+                                Margin="60 0 0 20">
+                                2 вкладка связана со статистикой. Статистика собирается автоматически и по разным точкам системы.
+                            </TextBlock>
+                            
+                            <TextBlock
+                                Foreground="{StaticResource White}"
+                                TextWrapping="Wrap"
+                                FontSize="28"
+                                Margin="60 0 0 20">
+                                3 вкладка связана с заказами. Здесь вы можете оформлять, изменять и продвигать заказы.
+                            </TextBlock>
+                            
+                            <TextBlock
+                                Foreground="{StaticResource White}"
+                                TextWrapping="Wrap"
+                                FontSize="28"
+                                Margin="60 0 0 20">
+                                4 вкладка это чат. Простой чат для комуницирования с другими работниками.
+                            </TextBlock>
+                            
+                            <TextBlock
+                                Foreground="{StaticResource White}"
+                                TextWrapping="Wrap"
+                                FontSize="36"
+                                Margin="0 0 0 20">
+                                Для добавления данных в таблице нажмите на кнопку в левом верхнем углу таблицы с изображением символа "+". Далее у вас появится форма для заполнения данных. Вы вводите данные и нажимаете на кнопку "Добавить". Если данные валидны то все пройдет хорошо, иначе появится окно уведомляющее об ошибке.
+                            </TextBlock>
+                            
+                            <TextBlock
+                                Foreground="{StaticResource White}"
+                                TextWrapping="Wrap"
+                                FontSize="36"
+                                Margin="0 0 0 20">
+                                Для удаления данных из таблицы выберите элемент из списка и нажмите на кнопку в левом верхнем углу таблицы с изображением символа "-". 
+                            </TextBlock>
+                            
+                            <TextBlock
+                                Foreground="{StaticResource White}"
+                                TextWrapping="Wrap"
+                                FontSize="36"
+                                Margin="0 0 0 20">
+                                Для изменения данных в таблице выберите элемент из списка и нажмите на кнопку в левом верхнем углу таблицы с изображением символа "!". Далее у вас появится форма для заполнения данных. Вы вводите данные и нажимаете на кнопку "Изменить". Если данные валидны то все пройдет хорошо, иначе появится окно уведомляющее об ошибке.
+                            </TextBlock>
+                        </StackPanel>
+                        </ScrollViewer>
+                        
+                    </Border>
+                    
                 </StackPanel>
             </Border>
             
